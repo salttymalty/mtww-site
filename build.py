@@ -160,6 +160,16 @@ document.addEventListener('DOMContentLoaded', function() {{
 """
 
 
+def show_thumb(show_id):
+    """Find the first image in a show's gallery folder for use as a thumbnail."""
+    gallery_dir = ASSETS / "images" / show_id
+    if gallery_dir.is_dir():
+        for p in sorted(gallery_dir.iterdir()):
+            if p.suffix.lower() in (".jpg", ".jpeg", ".png", ".webp"):
+                return f"assets/images/{show_id}/{p.name}"
+    return ""
+
+
 def show_card(show):
     """Render a show as a comparison-ready card for listing pages."""
     # Status badges
@@ -221,7 +231,11 @@ def show_card(show):
       <a href="{href}" class="show-card-cta">View details &rarr;</a>
     </div>"""
 
+    thumb = show_thumb(show["id"])
+    thumb_html = f'  <img class="show-card-thumb" src="{thumb}" alt="{show["title"]} production photo" loading="lazy">' if thumb else ""
+
     return f"""<article class="show-card" data-age="{show.get('min_age', '')}" data-cast="{show.get('cast_size', '')}" data-runtime="{show.get('runtime_minutes', '')}" data-status="{show['status']}" data-difficulty="{show.get('difficulty', '')}" data-themes="{','.join(show.get('themes', []))}">
+{thumb_html}
   <div class="show-card-body">
     <h3><a href="{href}"{target}>{show['title']}</a> {status_badge} {diff_badge}</h3>
     <p class="show-tagline">{tagline}</p>
@@ -344,6 +358,7 @@ def build_index():
     ) + nav("Home") + f"""
 <main id="main">
   <section class="hero">
+    <img class="hero-photo" src="assets/images/just-so-production-01.png" alt="Just So production — kids performing on stage in animal costumes">
     <div class="hero-inner">
       <h1>Find the Right Musical for Your Students</h1>
       <p class="hero-sub">Original musicals written for young performers — tested on stage with real kids at The Actors Garden over 30 years. Complete Production Kits from ${site['licensing_default_price']}.</p>
@@ -771,7 +786,8 @@ def build_show_page(show):
         schema=schemas[0]
     ) + nav("Our Shows") + f"""
 <main id="main">
-  <section class="show-hero">
+  <section class="show-hero{' show-hero-with-image' if show_thumb(show['id']) else ''}">
+    {('<img class="show-hero-image" src="' + show_thumb(show["id"]) + '" alt="' + esc(show["title"]) + ' production photo">') if show_thumb(show["id"]) else ''}
     <h1>{show['title']}</h1>
     <p class="show-hero-tagline">{show.get('tagline', '')}</p>
     <p class="show-hero-credential">By two-time Richard Rodgers Award winner Dave Hudson</p>

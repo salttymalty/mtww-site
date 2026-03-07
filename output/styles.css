@@ -164,11 +164,24 @@ a:focus-visible {
   color: var(--color-white);
   text-align: center;
   padding: var(--space-xl) var(--space-md);
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-photo {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.2;
 }
 
 .hero-inner {
   max-width: var(--max-width);
   margin: 0 auto;
+  position: relative;
+  z-index: 1;
 }
 
 .hero h1 {
@@ -207,6 +220,17 @@ a:focus-visible {
   color: var(--color-white);
   padding: var(--space-lg) var(--space-md) var(--space-md);
   text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.show-hero-image {
+  width: 100%;
+  max-height: 300px;
+  object-fit: cover;
+  border-radius: 6px;
+  margin-bottom: var(--space-md);
+  box-shadow: 0 4px 16px hsla(25, 40%, 30%, 0.2);
 }
 
 .show-hero h1 {
@@ -422,6 +446,13 @@ a:focus-visible {
 .show-card:hover {
   box-shadow: var(--shadow-lg);
   transform: translateY(-2px);
+}
+
+.show-card-thumb {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  display: block;
 }
 
 .show-card-body {
