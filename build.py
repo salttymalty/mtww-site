@@ -12,6 +12,7 @@ Usage:
 import json
 import sys
 import os
+import shutil
 import html as html_mod
 from pathlib import Path
 from datetime import datetime
@@ -19,6 +20,7 @@ from datetime import datetime
 ROOT = Path(__file__).parent
 DATA = ROOT / "data"
 OUTPUT = ROOT / "output"
+ASSETS = ROOT / "assets"
 
 
 def load_json(name):
@@ -680,6 +682,27 @@ def build_show_page(show):
     <dl class="faq">
 {faq_html}
     </dl>
+  </section>""")
+
+    # ── Photo gallery (auto-discovered from assets/images/{show-id}/) ──
+    gallery_dir = ASSETS / "images" / show["id"]
+    if gallery_dir.is_dir():
+        photos = sorted(
+            p for p in gallery_dir.iterdir()
+            if p.suffix.lower() in (".jpg", ".jpeg", ".png", ".webp")
+        )
+        if photos:
+            gallery_items = "\n".join(
+                f'      <img src="../assets/images/{show["id"]}/{p.name}" alt="{show["title"]} production photo" loading="lazy">'
+                for p in photos
+            )
+            sections.append(f"""
+  <section class="section">
+    <h2>Production Photos</h2>
+    <p class="photo-credit">Photos by Ron Orzel / Foto Ops</p>
+    <div class="photo-gallery">
+{gallery_items}
+    </div>
   </section>""")
 
     # ── Free perusal CTA (after they know what the show is) ──
