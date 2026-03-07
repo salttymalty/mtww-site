@@ -693,7 +693,7 @@ def build_show_page(show):
         )
         if photos:
             gallery_items = "\n".join(
-                f'      <img src="../assets/images/{show["id"]}/{p.name}" alt="{show["title"]} production photo" loading="lazy">'
+                f'      <img src="assets/images/{show["id"]}/{p.name}" alt="{show["title"]} production photo" loading="lazy">'
                 for p in photos
             )
             sections.append(f"""
@@ -1225,6 +1225,16 @@ def build_all():
 
     build_sitemap()
     build_robots()
+
+    # Copy image assets into output so GitHub Pages can serve them
+    src_images = ASSETS / "images"
+    dst_images = OUTPUT / "assets" / "images"
+    if src_images.is_dir():
+        if dst_images.exists():
+            shutil.rmtree(dst_images)
+        shutil.copytree(src_images, dst_images)
+        n_images = sum(1 for _ in dst_images.rglob("*") if _.is_file())
+        print(f"  copied {n_images} images → output/assets/images/")
 
     n_shows = len(shows)
     n_resources = len(resources)
