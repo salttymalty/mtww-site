@@ -39,24 +39,17 @@ The three BBB shows (Tut Tut!, Bounce!, The Show Must Go Online) link out to Bea
 
 ## Current State (March 2026)
 
-| Show | Data Complete | What's Missing |
-|------|--------------|----------------|
-| Just So | 100% | Production photos, audio samples |
-| Becky Thatcher | 91% | Premiere year, photos, audio |
-| Off to Olympus | 91% | Premiere year, photos, audio |
-| Pots and Pan | 8% | Almost everything — see below |
+Just So, Becky Thatcher, and Off to Olympus have full show pages with details, FAQs, and curriculum connections. Pots and Pan is a placeholder — needs your input to fill out. All shows still need production photos and audio samples.
 
-Run `python3 build.py --check` for the full report anytime.
+Run `python3 build.py --check` anytime to see what's filled in and what's still open.
 
 ---
 
-## What Needs You, Dave
+## Open Items (Your Call)
 
-### Priority 1: Pots and Pan
+### Pots and Pan
 
-This show is basically a placeholder. It needs everything:
-
-Edit `data/shows.json`, find the `pots-and-pan` entry, and fill in:
+Edit `data/shows.json`, find the `pots-and-pan` entry. Here's what's open:
 - `synopsis` — 2-3 sentences about the show
 - `music_by` — who composed it?
 - `runtime_minutes` — approximate
@@ -73,14 +66,14 @@ Edit `data/shows.json`, find the `pots-and-pan` entry, and fill in:
 - `faq` — array of `{"q": "...", "a": "..."}` objects (see Just So for examples)
 - `curriculum_connections` — array of strings
 
-### Priority 2: Missing Details
+### Premiere Years & Production History
 
-- **Premiere years** for Becky Thatcher, Off to Olympus, Pots and Pan (`premiere_year` and `premiere_venue` in shows.json)
-- **Production history** — any stats? "Performed at X schools" or "Produced in X states/countries"?
+- **Premiere years** for Becky Thatcher, Off to Olympus, Pots and Pan — `premiere_year` and `premiere_venue` in shows.json
+- **Production history** — anything worth noting (cities, countries, number of productions)
 
-### Priority 3: The Full Catalog
+### The Full Catalog
 
-Only 7 of your 25+ musicals are in `shows.json`. The ones we've identified but haven't added:
+7 shows are in `shows.json` so far. Some others we could add:
 
 **With Paul Libman (Northern Sky Theater):**
 - A Cabin with a View, Bing! The Cherry Musical, Bringers, Cheeseheads!, Dust and Dreams, Good Knight, Main-Travelled Roads, Muskie Love, Naked Radio, No Bones About It, Strings Attached
@@ -91,9 +84,9 @@ Only 7 of your 25+ musicals are in `shows.json`. The ones we've identified but h
 **Other:**
 - Upon Reflection (with Jon Steinhagen)
 
-**Key question:** Should the Northern Sky/Libman catalog appear on this site? They're not MTWW-licensed shows, but they're your work and they're impressive. We could list them in an "Other Works" section (like the BBB shows) or keep them off entirely. Your call.
+**Open question:** Should the Northern Sky/Libman catalog appear on this site? They're not MTWW-licensed, but they could live in an "Other Works" section. Up to you.
 
-### Priority 4: Assets (When Ready)
+### Assets (When Ready)
 
 - **Production photos** — put in `assets/images/`, name them `{show-id}-01.jpg`, `{show-id}-02.jpg`, etc.
 - **Audio samples** — put in `assets/audio/`, name them `{show-id}-{song-name}.mp3`
@@ -152,21 +145,16 @@ mtww-site/
 - **No purple gradients** — house rule
 - CSS custom properties for theming
 
-## People Context
+## Who's Working on This
 
-- **Dave Hudson** — Head playwright, two-time Richard Rodgers Award winner (2005, 2007). 25+ musicals. This is your site.
-- **GiGi Hudson** — Artistic Director, co-founder. Identified the gap in the market for shows written specifically for young performers.
-- **Garen** — Built the site infrastructure, handles code and deployment. Push content and he'll handle the rest if anything breaks.
+- **Dave** — Content, show data, creative direction. This is your site.
+- **Garen** — Infrastructure, code, deployment. If something breaks after a push, just holler.
+- **GiGi** — Feedback and direction as needed.
 
-## The Competitive Landscape (Context)
+## How the Site Is Structured
 
-The main competitor is **Beat by Beat Press** (bbbpress.com). They dominate organic search for youth musical licensing with 26+ shows, 150+ blog posts, and a mature e-commerce checkout. MTWW's advantages over BBB:
+The site leads with philosophy (original musicals written for kids, not Junior versions) and makes it easy for a teacher to browse shows, compare specs, and request a perusal copy. There's a credential bar on key pages, a comparison table (MTWW vs Junior versions), and 5 blog posts targeting search queries teachers actually use.
 
-1. **Two Richard Rodgers Awards** (BBB's founder has one)
-2. **Every show workshopped with real kids** at The Actors Garden
-3. **Lower pricing** ($299-399 vs BBB's $295-395)
-4. **Original works** — not Junior versions of adult shows
+Beat by Beat Press is the main competitor in this space. The site is designed to highlight what MTWW does differently — but you know that landscape better than anyone. If the framing feels off anywhere, change it.
 
-The site is built to emphasize these advantages. The blog posts position MTWW's philosophy. The credential bar puts the Richard Rodgers Award on every page. The comparison table on the homepage and licensing page shows MTWW vs Junior versions.
-
-What the site still needs most from you: **content that only you can provide.** Show details, production history, the stories behind the shows, and eventually photos and audio.
+The thing the site needs most right now is **content that only you can provide** — show details, production history, the stories behind the shows, and eventually photos and audio.
