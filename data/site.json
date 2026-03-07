@@ -10,11 +10,12 @@
   "founded_year": 1996,
   "licensing_default_price": 299,
   "licensing_includes_default": [
-    "PDF script and piano/vocal score (printable)",
-    "Vocal lead sheets",
+    "Complete script (printable PDF — unlimited copies for your cast)",
+    "Piano/vocal score",
+    "Vocal lead sheets for every song",
     "Backing tracks for rehearsal and performance",
-    "No separate script or score rentals required",
-    "Unlimited copying for your cast and crew"
+    "Video recording and YouTube rights included",
+    "No script rentals. No returns. You keep everything."
   ],
   "credentials": [
     "Two-time Richard Rodgers Award winners (2005, 2007)",
@@ -25,7 +26,7 @@
   "nav": [
     {"label": "Home", "href": "index.html"},
     {"label": "Shows", "href": "shows.html"},
-    {"label": "Licensing", "href": "licensing.html"},
+    {"label": "What You Get", "href": "licensing.html"},
     {"label": "Resources", "href": "resources.html"},
     {"label": "About", "href": "about.html"},
     {"label": "Contact", "href": "contact.html"}

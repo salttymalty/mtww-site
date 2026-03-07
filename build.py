@@ -310,14 +310,14 @@ def build_index():
       <p class="hero-sub">Every show is workshopped, produced, and perfected at The Actors Garden before being offered for licensing. What you get has been proven on stage with real kids.</p>
       <div class="hero-ctas">
         <a href="shows.html" class="btn btn-primary">Browse Our Shows</a>
-        <a href="licensing.html" class="btn btn-secondary">How Licensing Works</a>
+        <a href="licensing.html" class="btn btn-secondary">What's in a Production Kit</a>
       </div>
     </div>
   </section>
 
   <section class="section" id="featured">
     <h2>Our Shows</h2>
-    <p>Available for licensing from ${site['licensing_default_price']}. Every show includes the complete script, piano/vocal score, lead sheets, and backing tracks.</p>
+    <p>Each show comes as a complete Production Kit — script, score, lead sheets, backing tracks, and video rights — from ${site['licensing_default_price']}.</p>
     <div class="show-grid">
 {cards}
     </div>
@@ -336,8 +336,8 @@ def build_index():
         <p>Every show is workshopped and produced at The Actors Garden before licensing. What you receive has been tested, revised, and perfected with real kids over 30 years.</p>
       </div>
       <div class="value-card">
-        <h3>Simple, Fair Licensing</h3>
-        <p>From ${site['licensing_default_price']} for everything: script, score, lead sheets, backing tracks. No per-script rental. No returns required. No surprises.</p>
+        <h3>Complete Production Kits</h3>
+        <p>From ${site['licensing_default_price']} for everything: script, score, lead sheets, backing tracks, and video recording rights. No per-script rental. No returns. No surprises.</p>
       </div>
       <div class="value-card">
         <h3>Award-Winning Writers</h3>
@@ -440,7 +440,7 @@ document.addEventListener('DOMContentLoaded', function() {
 <main>
   <section class="section" id="mtww-shows">
     <h2>MTWW Shows</h2>
-    <p>Available for licensing directly from Musical Theatre Worldwide. Every show includes the complete script, score, lead sheets, and backing tracks.</p>
+    <p>Available directly from Musical Theatre Worldwide. Every show comes as a complete Production Kit — script, score, lead sheets, backing tracks, and video rights.</p>
     <div class="filter-bar" role="toolbar" aria-label="Filter shows">
       <button class="filter-btn filter-active" data-filter="all">All Shows</button>
       <button class="filter-btn" data-filter="elementary">Elementary</button>
@@ -491,11 +491,11 @@ def build_show_page(show):
     </div>
   </section>""")
 
-    # ── Primary CTA ──
-    sections.append("""
+    # ── Perusal CTA (first — before any purchase ask) ──
+    sections.append(f"""
   <section class="section cta-section">
-    <a href="contact.html?subject=Perusal+Request" class="btn btn-primary btn-lg">Request a Perusal Copy</a>
-    <p class="cta-hint">Read the full script before you commit. Free for educators.</p>
+    <a href="mailto:{site['email']}?subject=Free+Perusal+%E2%80%94+{show['title'].replace(' ', '+')}" class="btn btn-primary btn-lg">Read the Script Free</a>
+    <p class="cta-hint">Email us and we'll send you the full script within 24 hours. No commitment, no credit card.</p>
   </section>""")
 
     # ── Synopsis ──
@@ -504,6 +504,21 @@ def build_show_page(show):
   <section class="section">
     <h2>About the Show</h2>
     <p>{show['synopsis']}</p>
+  </section>""")
+
+    # ── Battle-tested provenance ──
+    if show.get("premiere_year"):
+        provenance = f"Workshopped and produced at The Actors Garden since {show['premiere_year']}. What you receive has been performed, revised, and proven on stage with real kids."
+    else:
+        provenance = "Workshopped and produced at The Actors Garden. What you receive has been performed, revised, and proven on stage with real kids."
+
+    if show.get("available_on_mtww"):
+        sections.append(f"""
+  <section class="section provenance-section">
+    <div class="provenance-box">
+      <h3>Battle-Tested</h3>
+      <p>{provenance}</p>
+    </div>
   </section>""")
 
     # ── Credits + Details table ──
@@ -545,20 +560,23 @@ def build_show_page(show):
     </ul>
   </section>""")
 
-    # ── Licensing box ──
+    # ── What's in Your Production Kit ──
     if show.get("licensing_price"):
         lic_items = show.get("licensing_includes", site.get("licensing_includes_default", []))
-        items_html = "\n".join(f"      <li>{item}</li>" for item in lic_items)
+        items_html = "\n".join(f'      <li><span class="kit-check" aria-hidden="true">&#10003;</span> {item}</li>' for item in lic_items)
         sections.append(f"""
-  <section class="section section-alt" id="licensing">
-    <h2>Licensing</h2>
-    <div class="licensing-box">
-      <p class="licensing-price">${show['licensing_price']}</p>
-      <p>{show.get('licensing_notes', '')}</p>
-      <ul>
+  <section class="section section-alt" id="production-kit">
+    <h2>What's in Your Production Kit</h2>
+    <div class="kit-box">
+      <ul class="kit-list">
 {items_html}
       </ul>
-      <a href="contact.html?subject=License+{show['title'].replace(' ', '+')}" class="btn btn-primary">License This Show</a>
+      <div class="kit-price">
+        <p class="licensing-price">${show['licensing_price']}</p>
+        <p class="kit-terms">{show.get('licensing_notes', '')}</p>
+        <a href="mailto:{site['email']}?subject=Order+Production+Kit+%E2%80%94+{show['title'].replace(' ', '+')}" class="btn btn-primary">Order the Production Kit</a>
+        <a href="mailto:{site['email']}?subject=Free+Perusal+%E2%80%94+{show['title'].replace(' ', '+')}" class="btn btn-secondary btn-sm">or read the script free first</a>
+      </div>
     </div>
   </section>""")
 
@@ -626,6 +644,7 @@ def build_show_page(show):
     <h1>{show['title']}</h1>
     <p class="show-hero-tagline">{show.get('tagline', '')}</p>
     <p class="show-hero-credential">By two-time Richard Rodgers Award winner Dave Hudson</p>
+    <p class="show-hero-sub">{"Production Kit from $" + str(show['licensing_price']) + " &middot; " if show.get('licensing_price') else ""}Video rights included &middot; <a href="mailto:{site['email']}?subject=Free+Perusal+%E2%80%94+{show['title'].replace(' ', '+')}">Read the script free</a></p>
     {status_note}
   </section>
 {body}
@@ -717,7 +736,7 @@ def build_about():
 
 def build_licensing():
     site = load_json("site.json")
-    items = "\n".join(f"    <li>{item}</li>" for item in site["licensing_includes_default"])
+    items = "\n".join(f'    <li><span class="kit-check" aria-hidden="true">&#10003;</span> {item}</li>' for item in site["licensing_includes_default"])
 
     # Comparison table
     comp = site.get("comparison", {}).get("vs_junior", [])
@@ -728,21 +747,20 @@ def build_licensing():
         comp_rows += f"        <tr><td>{row['feature']}</td><td class='center'>{mtww}</td><td class='center'>{junior}</td></tr>\n"
 
     html = head(
-        "How Licensing Works",
-        f"License a MTWW musical for ${site['licensing_default_price']}. Includes script, score, lead sheets, and backing tracks. No rentals, no surprises.",
+        "Production Kits — What You Get",
+        f"MTWW Production Kits from ${site['licensing_default_price']}. Script, score, lead sheets, backing tracks, and video rights included. No rentals, no surprises.",
         canonical_path="licensing.html"
-    ) + nav("Licensing") + credential_bar() + f"""
+    ) + nav("What You Get") + credential_bar() + f"""
 <main>
   <section class="section">
-    <h2>How Licensing Works</h2>
-    <p>Licensing a Musical Theatre Worldwide show is simple and affordable. No rental fees, no per-script charges, no surprise costs.</p>
+    <h2>What's in a Production Kit</h2>
+    <p>Every MTWW show comes as a complete Production Kit — everything you need to rehearse, perform, and share your production. No rental fees, no per-script charges, no surprise costs.</p>
 
-    <div class="licensing-box">
-      <p class="licensing-price">From ${site['licensing_default_price']}</p>
-      <p>Each licensed show comes complete with everything you need:</p>
-      <ul>
+    <div class="kit-box">
+      <ul class="kit-list">
 {items}
       </ul>
+      <p class="licensing-price">From ${site['licensing_default_price']}</p>
     </div>
   </section>
 
@@ -750,11 +768,11 @@ def build_licensing():
     <h2>Getting Started</h2>
     <ol class="steps-list">
       <li><strong>Browse our shows</strong> — Find a musical that fits your program's age range, cast size, and timeline.</li>
-      <li><strong>Request a perusal copy</strong> — Read the full script before you commit. Free for educators.</li>
-      <li><strong>License the show</strong> — Pay once and receive everything as printable PDFs and downloadable audio.</li>
-      <li><strong>Produce it</strong> — Rehearse and perform with complete materials. Copy scripts for your cast. Record your production. No restrictions on how you use the materials within your license period.</li>
+      <li><strong>Read the script free</strong> — Email us and we'll send you the full script within 24 hours. No commitment.</li>
+      <li><strong>Order your Production Kit</strong> — Pay once and receive everything as printable PDFs and downloadable audio.</li>
+      <li><strong>Produce it</strong> — Copy scripts for your cast. Record your production. Upload to YouTube. No restrictions on how you use the materials within your license period.</li>
     </ol>
-    <a href="contact.html" class="btn btn-primary">Request a Perusal Copy</a>
+    <a href="contact.html" class="btn btn-primary">Read a Script Free</a>
   </section>
 
   <section class="section">
@@ -774,8 +792,8 @@ def build_licensing():
   <section class="section section-alt">
     <h2>Frequently Asked Questions</h2>
     <dl class="faq">
-      <dt>What's included in the licensing fee?</dt>
-      <dd>Script, piano/vocal score, vocal lead sheets, and backing tracks — all as printable PDFs and downloadable audio. No rental fees or per-script charges. You keep everything.</dd>
+      <dt>What's in the Production Kit?</dt>
+      <dd>Complete script (printable, unlimited copies), piano/vocal score, vocal lead sheets for every song, backing tracks for rehearsal and performance, and video recording + YouTube rights. No rental fees. You keep everything.</dd>
 
       <dt>Can we modify the show for our program?</dt>
       <dd>Contact us to discuss. Our shows are designed to be flexible with cast sizes and we're happy to work with you on adaptations.</dd>
@@ -784,13 +802,13 @@ def build_licensing():
       <dd>License terms vary by show — typically unlimited performances within a calendar year or a 2-week performance period. See individual show pages for details.</dd>
 
       <dt>Can we record and share our production?</dt>
-      <dd>Yes. MTWW licenses include video and YouTube rights for your production. Record it, share it with families, post it online.</dd>
+      <dd>Yes. Every Production Kit includes video recording and YouTube rights. Record your production, share it with families, post it online. No extra fees.</dd>
 
       <dt>Do we need to return any materials?</dt>
       <dd>No. Everything is delivered as digital files that you keep. No scripts to mail back, no rental returns.</dd>
 
-      <dt>Do you offer discounts for multiple shows?</dt>
-      <dd>Contact us — we're happy to discuss packages for programs licensing more than one show.</dd>
+      <dt>Can we read the script before ordering?</dt>
+      <dd>Absolutely. Email us and we'll send a free perusal copy of any show within 24 hours. No commitment, no credit card.</dd>
     </dl>
   </section>
 </main>
@@ -811,13 +829,13 @@ def build_contact():
     <h2>Get in Touch</h2>
     <div class="contact-grid">
       <div class="contact-card">
-        <h3>Request a Perusal Copy</h3>
-        <p>Want to read a script before licensing? Tell us which show and your organization name, and we'll send you a free perusal copy.</p>
-        <a href="mailto:{site['email']}?subject=Perusal%20Request" class="btn btn-primary">Request a Perusal</a>
+        <h3>Read a Script Free</h3>
+        <p>Tell us which show and your organization name. We'll send you the full script within 24 hours — no commitment, no credit card.</p>
+        <a href="mailto:{site['email']}?subject=Free%20Perusal%20Request" class="btn btn-primary">Read a Script Free</a>
       </div>
       <div class="contact-card">
-        <h3>General Inquiries</h3>
-        <p>Questions about licensing, our shows, or anything else? We'd love to hear from you.</p>
+        <h3>Order a Production Kit</h3>
+        <p>Ready to go? Questions about Production Kits, pricing, or anything else? We'd love to hear from you.</p>
         <p><a href="mailto:{site['email']}">{site['email']}</a></p>
         <p>{site['phone']}</p>
       </div>
