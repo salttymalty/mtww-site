@@ -1,0 +1,95 @@
+{
+  "_note": "Asset catalog for MTWW. Tracks what exists, where it lives, and what we still need. Add entries as materials surface from email, OneDrive, Dave's files, etc.",
+  "_statuses": {
+    "have_local": "On Garen's machine, path in 'location'",
+    "have_remote": "Exists in OneDrive, Google Drive, Dropbox, Box, email — not yet pulled down",
+    "on_daves_machine": "Dave has it, we don't",
+    "need": "Should exist but haven't located it yet",
+    "requested": "Asked Dave/someone for it",
+    "not_applicable": "Doesn't exist and doesn't need to"
+  },
+  "_types": ["script", "score", "lead_sheet", "backing_track", "sound_design", "recording", "photo", "video", "poster", "program", "correspondence", "contract", "press", "sibelius", "other"],
+  "_locations": "Freetext. Examples: 'OneDrive/MTWW/', 'email from Dave 2019-03', 'iCloud/Just So/', 'Dave's computer', 'Beat by Beat portal', 'unknown'",
+  "_privacy": "IMPORTANT: Some materials (cast lists, newsletters, programs, photos) contain names and images of minors who participated in AG productions. Do NOT download or commit these files to git. The catalog tracks metadata only — what exists and where to find it. Any production photos used on the public site require verified photo release forms (check AG CampDoc/Sawyer enrollment records). When in doubt, ask GiGi.",
+  "_searched": "2026-03-07: Personal Gmail (garenhudson@gmail.com) — 438 messages across 'just so', 'becky thatcher', 'off to olympus', 'pots and pan', 'actors garden', 'lead sheet'. Found 35 unique OneDrive links, 3 Dropbox links, 1 Box link.",
+
+  "assets": [
+
+    {"show_id": "just-so", "type": "script", "format": "pdf", "title": "Just So — Complete Script + Score (via All Things Just So)", "status": "have_remote", "location": "Box: https://app.box.com/s/dkn9poksdsnv6t9uri2r9wgjqeauolmi", "notes": "From GiGi 2017-06-07. Contains script updates, score lead sheets, and audio music. May be outdated — check against later versions."},
+    {"show_id": "just-so", "type": "script", "format": "pdf", "title": "Just So — Revised Script (2018)", "status": "have_remote", "location": "OneDrive: https://1drv.ms/f/s!AizVKxtrxVUrg_kntEeO0EUtmv_xKQ", "notes": "From GiGi 2018-06-04: 'revised script please look at this one'"},
+    {"show_id": "just-so", "type": "score", "format": "pdf", "title": "Just So — Piano/Vocal Score", "status": "have_remote", "location": "OneDrive (within Just So Files folder): https://1drv.ms/f/s!AizVKxtrxVUrg65Vju855ZoHDnBsnA", "notes": "From Dave 2018-03-26. Main folder with demos, backing tracks, 'cleaned' mp3s, augmented mixes."},
+    {"show_id": "just-so", "type": "lead_sheet", "format": "pdf", "title": "Just So — Lead Sheets", "status": "have_remote", "location": "OneDrive: https://1drv.ms/f/s!AizVKxtrxVUrgbVB1x7b70Wj15IlJg", "notes": "From Dave 2017-06-22."},
+    {"show_id": "just-so", "type": "lead_sheet", "format": "pdf", "title": "Just So — New Scores w/Chords", "status": "have_remote", "location": "OneDrive: https://1drv.ms/f/s!AizVKxtrxVUrgbVN5Rlw4JI2qpcFOg", "notes": "From Garen 2017-06-23. Updated versions with chord symbols."},
+    {"show_id": "just-so", "type": "backing_track", "format": "mp3", "title": "Just So — Backing Tracks + Demos (full folder)", "status": "have_remote", "location": "OneDrive: https://1drv.ms/f/s!AizVKxtrxVUrg65Vju855ZoHDnBsnA", "notes": "From Dave 2018-03-26. 'Within, the two main folders to take a look at are: demos, backing tracks. Within those are cleaned folders, full of mp3s.'"},
+    {"show_id": "just-so", "type": "recording", "format": "mp3", "title": "Just So — Rough Mixes (Rick Riggs / Handwritten Recording)", "status": "have_remote", "location": "OneDrive: https://1drv.ms/f/s!AizVKxtrxVUrg8JIpZXrJu_3yTXJKQ", "notes": "From Dave 2018-03-08. Studio mixes from Rick at Handwritten Recording."},
+    {"show_id": "just-so", "type": "recording", "format": null, "title": "Just So — Recording Session Files (Dropbox/Rick Riggs)", "status": "have_remote", "location": "Dropbox: https://www.dropbox.com/l/scl/AACnwoODYhnm7dfD4asOXoiX1n6jvBhceHs", "notes": "Forwarded by Dave 2017-12-16. Rick Riggs shared full session. Link may be expired."},
+    {"show_id": "just-so", "type": "recording", "format": null, "title": "Just So — Recording Session Folder (OneDrive)", "status": "have_remote", "location": "OneDrive: https://1drv.ms/f/s!AizVKxtrxVUrgfApzXWOFxW4TN9dHA", "notes": "From Dave 2017-12-13 'Just So Recording - Saturday'"},
+    {"show_id": "just-so", "type": "recording", "format": null, "title": "Just So — Dave's Shared Folder (Dropbox)", "status": "have_remote", "location": "Dropbox: https://www.dropbox.com/l/scl/AABmDopVcWM22dGJxp2wgndDX4mwP5d0Ifo", "notes": "Dave shared 'Just So' via Dropbox 2018-03-14."},
+    {"show_id": "just-so", "type": "sibelius", "format": "sib", "title": "Just So — Sibelius Notation Files (2018)", "status": "have_remote", "location": "OneDrive: https://1drv.ms/f/s!AizVKxtrxVUrg65X8EKIA0xUfcWvtQ", "notes": "From Dave 2018-01-30."},
+    {"show_id": "just-so", "type": "sibelius", "format": "sib", "title": "Just So — Sibelius Files (2025, updated)", "status": "have_remote", "location": "OneDrive: https://1drv.ms/f/c/2b55c56b1b2bd52c/EizVKxtrxVUggCtX1wAAAAABRzBJ_0hHj6vpSIcj_9FGXg?e=vgdiGc", "notes": "From Dave 2025-06-23. Most recent version. Discussion about adding 'chorus' or 'mix of chorus and storyteller' labels."},
+    {"show_id": "just-so", "type": "sibelius", "format": "sib", "title": "Just So — Sibelius Files (original set)", "status": "have_remote", "location": "OneDrive: https://1drv.ms/f/s!AizVKxtrxVUrgbINX_oHnAqhWuG6vA", "notes": "From Dave 2017-06-21 'Sibelius Files'"},
+    {"show_id": "just-so", "type": "sound_design", "format": "mp3", "title": "Just So — Cricket/Ambient Sound Effects", "status": "have_local", "location": "iCloud/Documents/Just So/ and justsosounddesign/", "notes": "5 files: CrixSunrise.mp3, Ambient Cricketstrem fun.mp3, CrixOmbb.mp3, Ambient Crickets.mp3, crix new.mp3. Likely for Crix the Cricket character."},
+    {"show_id": "just-so", "type": "photo", "format": null, "title": "Just So — Production Photos", "status": "need", "location": null, "notes": "Any photos from AG, Open Door, or other productions. Garen emailed self 'Just So notes' 11+ times on 2018-03-28 — may contain photos."},
+    {"show_id": "just-so", "type": "video", "format": null, "title": "Just So — Performance Video", "status": "need", "location": null, "notes": "Any recorded performances."},
+    {"show_id": "just-so", "type": "poster", "format": null, "title": "Just So — Show Poster/Artwork", "status": "need", "location": null, "notes": null},
+    {"show_id": "just-so", "type": "program", "format": null, "title": "Just So — Show Program", "status": "need", "location": null, "notes": "From any production. Useful for cast lists, production history."},
+
+    {"show_id": "becky-thatcher", "type": "script", "format": "pdf", "title": "Becky Thatcher — Script + Materials Folder", "status": "have_remote", "location": "OneDrive: https://1drv.ms/f/s!AizVKxtrxVUrg65z7y_tIAitCLYMPA", "notes": "From Dave 2018-01-31 subject: 'becky thatcher'"},
+    {"show_id": "becky-thatcher", "type": "score", "format": "pdf", "title": "Becky Thatcher — Materials (via GiGi links)", "status": "have_remote", "location": "OneDrive folder: https://1drv.ms/f/s!AizVKxtrxVUrg8BzmmChGS98ZMsyWw AND doc: https://1drv.ms/w/s!AizVKxtrxVUrg-kbmMzZ65F96LXwXA", "notes": "From GiGi 2018-05-03: 'a few Becky Thatcher links to look at'. Two links — folder and Word doc."},
+    {"show_id": "becky-thatcher", "type": "recording", "format": null, "title": "Becky Thatcher — Recording Session Files (Dropbox/Rick Riggs)", "status": "have_remote", "location": "Dropbox: https://www.dropbox.com/l/scl/AABANaXP_AqfYqTF2zNEByR4COGSn6D9aK0", "notes": "Forwarded by Dave 2017-12-22. Rick Riggs shared full session. Link may be expired."},
+    {"show_id": "becky-thatcher", "type": "recording", "format": null, "title": "Becky Thatcher — Recording Session Folder (OneDrive)", "status": "have_remote", "location": "OneDrive: https://1drv.ms/f/s!AizVKxtrxVUrguxtGClrvPCa1vNjkQ AND https://1drv.ms/f/s!AizVKxtrxVUrgu1CvUuf4uawd3FT8A", "notes": "From Dave 2017-12-18 and 2017-12-20 'Thursday - Becky Thatcher' thread. Two different folder links."},
+    {"show_id": "becky-thatcher", "type": "recording", "format": null, "title": "Becky Thatcher — Closing Number", "status": "have_remote", "location": "OneDrive: https://1drv.ms/f/s!AizVKxtrxVUrgvt_2gF8mi4kPiVPGQ", "notes": "From Dave 2018-01-25 'Becky - Closing Number'"},
+    {"show_id": "becky-thatcher", "type": "photo", "format": null, "title": "Becky Thatcher — Production Photos", "status": "need", "location": null, "notes": "GiGi forwarded 'Becky Thatcher Cast List' 2018-07-16 and 'Final Newsletter' 2018-07-01 — may contain photos."},
+    {"show_id": "becky-thatcher", "type": "video", "format": null, "title": "Becky Thatcher — Performance Video", "status": "need", "location": null, "notes": null},
+
+    {"show_id": "off-to-olympus", "type": "script", "format": null, "title": "Off to Olympus — Full Materials Folder", "status": "have_remote", "location": "OneDrive: https://1drv.ms/f/s!AizVKxtrxVUrhM8ch17zvPsGLMZ5rA AND https://1drv.ms/f/s!AizVKxtrxVUrgqg3NPWOilagOcHY-Q", "notes": "From Dave 2019-01-28. Two links in the same email. Jennifer Resek (truemusic@sbcglobal.net) also discussed Off to Olympus 2019-06."},
+    {"show_id": "off-to-olympus", "type": "photo", "format": null, "title": "Off to Olympus — Production Photos", "status": "need", "location": null, "notes": null},
+    {"show_id": "off-to-olympus", "type": "video", "format": null, "title": "Off to Olympus — Performance Video", "status": "need", "location": null, "notes": null},
+
+    {"show_id": "pots-and-pan", "type": "script", "format": "pdf", "title": "Pots and Pan — Script + Full P/V Score (2024)", "status": "have_remote", "location": "OneDrive: https://1drv.ms/f/s!AizVKxtrxVUri8sqNhkKtRnVXMi5Zw?e=NoIaZx", "notes": "From Dave 2024-06-13. 'At the top level of the folder are PDFs of the script AND the full piano vocal score.' 2024 Pots and Pan Files - Actors Garden Session 1."},
+    {"show_id": "pots-and-pan", "type": "score", "format": "pdf", "title": "Pots and Pan — Publishing Folder", "status": "have_remote", "location": "OneDrive: https://1drv.ms/f/s!AizVKxtrxVUrgvxrrwFNYBk8DYZFhQ", "notes": "From Dave 2018-01-29."},
+    {"show_id": "pots-and-pan", "type": "recording", "format": null, "title": "Pots and Pan — Mixing/Mastering Assets", "status": "have_remote", "location": "OneDrive: https://1drv.ms/f/s!AizVKxtrxVUrgfkJNMD0r2HPXwqDXA", "notes": "From Dave 2018-01-19. 'Most important are Kiss a Fish and Hurrah for Hook. Subfolders with new drum files in aif form.'"},
+    {"show_id": "pots-and-pan", "type": "recording", "format": null, "title": "Pots and Pan — Dave's Shared Folder (Dropbox)", "status": "have_remote", "location": "Dropbox: https://www.dropbox.com/l/scl/AAA5qmpbO5wNPKWxQscq3_pFdiyTKeQdVEU", "notes": "Dave shared 'Pots and Pan' via Dropbox 2018-01-31. Link may be expired."},
+    {"show_id": "pots-and-pan", "type": "photo", "format": null, "title": "Pots and Pan — Production Photos", "status": "need", "location": null, "notes": "Multiple Pots and Pan newsletters forwarded by GiGi Jun-Aug 2024 — may contain photos."},
+
+    {"show_id": null, "type": "lead_sheet", "format": "pdf", "title": "Dare Song — Lead Sheet", "status": "have_remote", "location": "OneDrive: https://1drv.ms/b/s!AizVKxtrxVUrjIZM9dRajic857jdcg?e=VzJxgh", "notes": "From Dave 2024-10-06. Single PDF. Show unknown — may be standalone or from a show in development."},
+
+    {"show_id": null, "type": "other", "format": null, "title": "Wings of Imagining — Mixing Files", "status": "have_remote", "location": "OneDrive (3 links): https://1drv.ms/u/s!AizVKxtrxVUrhaoDQoXOwrbdcQkLLQ?e=MiBmNf, https://1drv.ms/u/s!AizVKxtrxVUrhale7iBs_leoHUSYaA?e=dBsRuk, https://1drv.ms/u/s!AizVKxtrxVUrhaoUTKD-hEw98Uy-qw?e=LL6hAK", "notes": "From Dave 2020-05-30. Not a known MTWW show — may be a Dave project or AG production."},
+
+    {"show_id": null, "type": "other", "format": null, "title": "Green Gables — Sibelius Files", "status": "have_remote", "location": "OneDrive: https://1drv.ms/u/s!AizVKxtrxVUrhLEe-EdZFUWlwCalqA?e=RLZlAq", "notes": "From Dave 2019-06-26. AG produced Green Gables Act I and Act II (2024-2025)."},
+
+    {"show_id": "just-so", "type": "program", "format": null, "title": "Just So 2017 — Cast List and Schedule", "status": "have_remote", "location": "OneDrive (spreadsheet): https://1drv.ms/x/s!AizVKxtrxVUrgbFu04l65noj8-W5TA", "notes": "From GiGi 2017-06-12."},
+
+    {"show_id": null, "type": "program", "format": null, "title": "AG Cast List and Critical Info (COVID era)", "status": "have_remote", "location": "OneDrive: https://1drv.ms/u/s!AizVKxtrxVUrhbRt5Ay6l0-UKTMwYg?e=hfRSgA", "notes": "From GiGi 2020-06-15."},
+
+    {"show_id": "tut-tut", "type": "script", "format": "pdf", "title": "Tut, Tut! — Complete Script", "status": "need", "location": null, "notes": "Licensed through Beat by Beat. Dave may have a master copy."},
+    {"show_id": "tut-tut", "type": "score", "format": "pdf", "title": "Tut, Tut! — Piano/Vocal Score", "status": "need", "location": null, "notes": "Composer: Denver Casado. 13 songs."},
+    {"show_id": "bounce", "type": "script", "format": "pdf", "title": "Bounce! — Complete Script", "status": "need", "location": null, "notes": "Licensed through Beat by Beat."},
+    {"show_id": "the-show-must-go-online", "type": "script", "format": "pdf", "title": "The Show Must Go Online — Complete Script", "status": "need", "location": null, "notes": "Licensed through Beat by Beat. Book by Jessica Penzias."},
+
+    {"show_id": null, "type": "photo", "format": null, "title": "Dave Hudson — Headshot", "status": "need", "location": null, "notes": "For about page and press kit."},
+    {"show_id": null, "type": "photo", "format": null, "title": "GiGi — Headshot", "status": "need", "location": null, "notes": "For about page."},
+    {"show_id": null, "type": "press", "format": null, "title": "Richard Rodgers Award — Press/Documentation", "status": "need", "location": null, "notes": "2005 and 2007 awards. Any press clippings, award letters, ceremony photos."},
+    {"show_id": null, "type": "press", "format": null, "title": "MTWW Press Clippings", "status": "need", "location": null, "notes": "Any reviews, articles, mentions from productions."},
+    {"show_id": null, "type": "correspondence", "format": null, "title": "School/Director Testimonials", "status": "need", "location": null, "notes": "Emails from teachers, directors, schools who've produced MTWW shows. Even 2-3 quotes would transform the site."},
+    {"show_id": null, "type": "other", "format": null, "title": "MTWW Logo / Brand Assets", "status": "need", "location": null, "notes": "Any existing logo files, brand marks."},
+    {"show_id": null, "type": "other", "format": null, "title": "Northern Sky / Libman Catalog — Master List", "status": "need", "location": null, "notes": "Full list of Dave+Paul Libman shows. Main-Travelled Roads performed in concert at AG Sept 2024."},
+    {"show_id": null, "type": "other", "format": null, "title": "Denise Wright Collaborations — Master List", "status": "need", "location": null, "notes": "Known: Jacob's Pillow, Saint Peter's UmbrElla, TRaIN."},
+    {"show_id": null, "type": "other", "format": null, "title": "Upon Reflection (Jon Steinhagen) — Materials", "status": "need", "location": null, "notes": null}
+  ],
+
+  "_key_contacts": {
+    "dave": "lyricsandbook@gmail.com (also editor@marengopublishing.com)",
+    "gigi": "gigi@theactorsgarden.com",
+    "rick_riggs": "rick@handwrittenrecording.com — recorded Just So, Becky Thatcher, Pots and Pan",
+    "jennifer_resek": "truemusic@sbcglobal.net — Off to Olympus music director",
+    "kim_frost": "kim@kimfrostvocalstudios.com — AG vocal work"
+  },
+
+  "_cloud_storage": {
+    "daves_onedrive": "All 1drv.ms links with prefix AizVKxtrxVUr are Dave's OneDrive. This is the primary repository for MTWW show files.",
+    "garens_onedrive": "Links with prefix Au1K0337_0kt are Garen's OneDrive.",
+    "dropbox_rick": "Handwritten Recording shared session files via Dropbox (2017-2018). Links may be expired.",
+    "box_gigi": "GiGi used Box for 'All things Just So' in 2017."
+  }
+}
