@@ -706,27 +706,6 @@ def build_show_page(show):
     </dl>
   </section>""")
 
-    # ── Photo gallery (auto-discovered from assets/images/{show-id}/) ──
-    gallery_dir = ASSETS / "images" / show["id"]
-    if gallery_dir.is_dir():
-        photos = sorted(
-            p for p in gallery_dir.iterdir()
-            if p.suffix.lower() in (".jpg", ".jpeg", ".png", ".webp")
-        )
-        if photos:
-            gallery_items = "\n".join(
-                f'      <img src="assets/images/{show["id"]}/{p.name}" alt="{show["title"]} production photo" loading="lazy">'
-                for p in photos
-            )
-            sections.append(f"""
-  <section class="section">
-    <h2>Production Photos</h2>
-    <p class="photo-credit">Photos by Ron Orzel / Foto Ops</p>
-    <div class="photo-gallery">
-{gallery_items}
-    </div>
-  </section>""")
-
     # ── Free perusal CTA (after they know what the show is) ──
     if show.get("available_on_mtww"):
         sections.append(f"""
@@ -793,8 +772,7 @@ def build_show_page(show):
         schema=schemas[0]
     ) + nav("Our Shows") + f"""
 <main id="main">
-  <section class="show-hero{' show-hero-with-image' if show_thumb(show['id']) else ''}">
-    {('<img class="show-hero-image" src="' + show_thumb(show["id"]) + '" alt="' + esc(show["title"]) + ' production photo">') if show_thumb(show["id"]) else ''}
+  <section class="show-hero">
     <h1>{show['title']}</h1>
     <p class="show-hero-tagline">{show.get('tagline', '')}</p>
     <p class="show-hero-credential">By two-time Richard Rodgers Award winner Dave Hudson</p>
