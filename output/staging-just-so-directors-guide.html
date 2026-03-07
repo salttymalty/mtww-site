@@ -17,6 +17,7 @@
 <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+<a href="#main" class="skip-link">Skip to content</a>
 <nav class="site-nav" aria-label="Main navigation">
   <div class="nav-inner">
     <a href="index.html" class="nav-logo">MTWW</a>
@@ -27,19 +28,19 @@
     </button>
     <div class="nav-links" id="nav-menu">
     <a href="index.html">Home</a>
-    <a href="shows.html">Shows</a>
-    <a href="licensing.html">What You Get</a>
-    <a href="resources.html" class="nav-active">Resources</a>
+    <a href="shows.html">Our Shows</a>
+    <a href="licensing.html">Production Kits</a>
+    <a href="resources.html" class="nav-active">For Educators</a>
     <a href="about.html">About</a>
     <a href="contact.html">Contact</a>
     </div>
   </div>
 </nav>
 
-<main>
+<main id="main">
   <article class="section article-content">
     <h1>Staging Just So: A Director's Guide</h1>
-    <p class="article-meta">Musical Theatre Worldwide &middot; 2026-03-06</p>
+    <p class="article-meta">Musical Theatre Worldwide</p>
     <p>Just So is one of Musical Theatre Worldwide's most popular shows — an adaptation of Rudyard Kipling's classic stories exploring how various animals acquired their distinctive features. If you're considering it for your program, here's what you need to know.</p>
     <h2>The Show at a Glance</h2>
     <p>Just So runs approximately 70 minutes with an intermission. It features 25 speaking roles plus a flexible chorus, 9 songs, and is appropriate for 3rd grade and up. The cast is largely gender-neutral, making it easy to work with whatever group of students you have.</p>
@@ -66,12 +67,27 @@
   <section class="section section-alt">
     <h2>Related Shows</h2>
     <div class="show-grid">
-<article class="show-card" data-age="8" data-cast="25" data-runtime="70" data-status="active">
+<article class="show-card" data-age="8" data-cast="25" data-runtime="70" data-status="active" data-difficulty="beginner-friendly" data-themes="animals,folklore,storytelling,Kipling">
   <div class="show-card-body">
-    <h3><a href="just-so.html">Just So</a>  <span class="badge badge-diff">beginner-friendly</span></h3>
+    <h3><a href="just-so.html">Just So</a>  <span class="badge badge-diff">Beginner Friendly</span></h3>
     <p class="show-tagline">Rudyard Kipling's beloved stories brought to life on stage</p>
-    <p class="show-meta"><span>70 min + intermission</span><span class="card-sep" aria-hidden="true">&middot;</span><span>25+ cast</span><span class="card-sep" aria-hidden="true">&middot;</span><span>3rd grade and up</span><span class="card-sep" aria-hidden="true">&middot;</span><span>$299</span></p>
-    <p class="show-credits">Music by Leah Okimoto &middot; Lyrics by Dave Hudson</p>
+    <p class="show-credits">Music by Leah Okimoto</p>
+    <dl class="show-specs">
+        <dt>Ages</dt><dd>3rd grade and up</dd>
+        <dt>Cast</dt><dd>25+ roles</dd>
+        <dt>Runtime</dt><dd>70 min + int.</dd>
+        <dt>Level</dt><dd>Beginner Friendly</dd>
+    </dl>
+    <div class="show-tags">
+      <span class="show-tag">animals</span>
+      <span class="show-tag">folklore</span>
+      <span class="show-tag">storytelling</span>
+      <span class="show-tag">Kipling</span>
+    </div>
+    <div class="show-card-footer">
+      <span class="show-price">$299</span>
+      <a href="just-so.html" class="show-card-cta">View details &rarr;</a>
+    </div>
   </div>
 </article>
 
@@ -107,6 +123,25 @@ document.addEventListener('DOMContentLoaded', function() {
       menu.classList.toggle('nav-open');
     });
   }
+
+  // FAQ accordion
+  var dts = document.querySelectorAll('.faq dt');
+  dts.forEach(function(dt) {
+    dt.addEventListener('click', function() {
+      var dd = dt.nextElementSibling;
+      var isOpen = dt.classList.contains('faq-open');
+      // Close all
+      dts.forEach(function(d) {
+        d.classList.remove('faq-open');
+        if (d.nextElementSibling) d.nextElementSibling.classList.remove('faq-open');
+      });
+      // Toggle this one
+      if (!isOpen) {
+        dt.classList.add('faq-open');
+        if (dd) dd.classList.add('faq-open');
+      }
+    });
+  });
 });
 </script>
 </body>

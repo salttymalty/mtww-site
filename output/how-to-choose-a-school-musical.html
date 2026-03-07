@@ -17,6 +17,7 @@
 <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+<a href="#main" class="skip-link">Skip to content</a>
 <nav class="site-nav" aria-label="Main navigation">
   <div class="nav-inner">
     <a href="index.html" class="nav-logo">MTWW</a>
@@ -27,19 +28,19 @@
     </button>
     <div class="nav-links" id="nav-menu">
     <a href="index.html">Home</a>
-    <a href="shows.html">Shows</a>
-    <a href="licensing.html">What You Get</a>
-    <a href="resources.html" class="nav-active">Resources</a>
+    <a href="shows.html">Our Shows</a>
+    <a href="licensing.html">Production Kits</a>
+    <a href="resources.html" class="nav-active">For Educators</a>
     <a href="about.html">About</a>
     <a href="contact.html">Contact</a>
     </div>
   </div>
 </nav>
 
-<main>
+<main id="main">
   <article class="section article-content">
     <h1>How to Choose a Musical for Your School or Youth Program</h1>
-    <p class="article-meta">Musical Theatre Worldwide &middot; 2026-03-06</p>
+    <p class="article-meta">Musical Theatre Worldwide</p>
     <p>Choosing a musical for your school or youth theater program is one of the most important decisions you'll make each season. The right show energizes your cast, engages your audience, and fits your program's capabilities. The wrong one leads to frustrated kids, overworked directors, and underwhelming performances.</p>
     <p>Here's a practical framework for making the right choice, drawn from 30 years of producing youth musicals at The Actors Garden in Oak Park, Illinois.</p>
     <h2>Start with Your Cast, Not Your Wish List</h2>
@@ -65,21 +66,51 @@
   <section class="section section-alt">
     <h2>Related Shows</h2>
     <div class="show-grid">
-<article class="show-card" data-age="8" data-cast="25" data-runtime="70" data-status="active">
+<article class="show-card" data-age="8" data-cast="25" data-runtime="70" data-status="active" data-difficulty="beginner-friendly" data-themes="animals,folklore,storytelling,Kipling">
   <div class="show-card-body">
-    <h3><a href="just-so.html">Just So</a>  <span class="badge badge-diff">beginner-friendly</span></h3>
+    <h3><a href="just-so.html">Just So</a>  <span class="badge badge-diff">Beginner Friendly</span></h3>
     <p class="show-tagline">Rudyard Kipling's beloved stories brought to life on stage</p>
-    <p class="show-meta"><span>70 min + intermission</span><span class="card-sep" aria-hidden="true">&middot;</span><span>25+ cast</span><span class="card-sep" aria-hidden="true">&middot;</span><span>3rd grade and up</span><span class="card-sep" aria-hidden="true">&middot;</span><span>$299</span></p>
-    <p class="show-credits">Music by Leah Okimoto &middot; Lyrics by Dave Hudson</p>
+    <p class="show-credits">Music by Leah Okimoto</p>
+    <dl class="show-specs">
+        <dt>Ages</dt><dd>3rd grade and up</dd>
+        <dt>Cast</dt><dd>25+ roles</dd>
+        <dt>Runtime</dt><dd>70 min + int.</dd>
+        <dt>Level</dt><dd>Beginner Friendly</dd>
+    </dl>
+    <div class="show-tags">
+      <span class="show-tag">animals</span>
+      <span class="show-tag">folklore</span>
+      <span class="show-tag">storytelling</span>
+      <span class="show-tag">Kipling</span>
+    </div>
+    <div class="show-card-footer">
+      <span class="show-price">$299</span>
+      <a href="just-so.html" class="show-card-cta">View details &rarr;</a>
+    </div>
   </div>
 </article>
 
-<article class="show-card" data-age="9" data-cast="25" data-runtime="80" data-status="active">
+<article class="show-card" data-age="9" data-cast="25" data-runtime="80" data-status="active" data-difficulty="intermediate" data-themes="American literature,adventure,friendship,courage">
   <div class="show-card-body">
-    <h3><a href="becky-thatcher.html">Becky Thatcher</a>  <span class="badge badge-diff">intermediate</span></h3>
+    <h3><a href="becky-thatcher.html">Becky Thatcher</a>  <span class="badge badge-diff">Intermediate</span></h3>
     <p class="show-tagline">Mark Twain's Hannibal, MO reimagined from Becky's perspective</p>
-    <p class="show-meta"><span>80 min + intermission</span><span class="card-sep" aria-hidden="true">&middot;</span><span>25+ cast</span><span class="card-sep" aria-hidden="true">&middot;</span><span>4th grade and up</span><span class="card-sep" aria-hidden="true">&middot;</span><span>$299</span></p>
-    <p class="show-credits">Music by Mark Sutton-Smith &middot; Lyrics by Dave Hudson</p>
+    <p class="show-credits">Music by Mark Sutton-Smith</p>
+    <dl class="show-specs">
+        <dt>Ages</dt><dd>4th grade and up</dd>
+        <dt>Cast</dt><dd>25+ roles</dd>
+        <dt>Runtime</dt><dd>80 min + int.</dd>
+        <dt>Level</dt><dd>Intermediate</dd>
+    </dl>
+    <div class="show-tags">
+      <span class="show-tag">American literature</span>
+      <span class="show-tag">adventure</span>
+      <span class="show-tag">friendship</span>
+      <span class="show-tag">courage</span>
+    </div>
+    <div class="show-card-footer">
+      <span class="show-price">$299</span>
+      <a href="becky-thatcher.html" class="show-card-cta">View details &rarr;</a>
+    </div>
   </div>
 </article>
 
@@ -115,6 +146,25 @@ document.addEventListener('DOMContentLoaded', function() {
       menu.classList.toggle('nav-open');
     });
   }
+
+  // FAQ accordion
+  var dts = document.querySelectorAll('.faq dt');
+  dts.forEach(function(dt) {
+    dt.addEventListener('click', function() {
+      var dd = dt.nextElementSibling;
+      var isOpen = dt.classList.contains('faq-open');
+      // Close all
+      dts.forEach(function(d) {
+        d.classList.remove('faq-open');
+        if (d.nextElementSibling) d.nextElementSibling.classList.remove('faq-open');
+      });
+      // Toggle this one
+      if (!isOpen) {
+        dt.classList.add('faq-open');
+        if (dd) dd.classList.add('faq-open');
+      }
+    });
+  });
 });
 </script>
 </body>

@@ -4,10 +4,10 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Our Shows — Musical Theatre Worldwide</title>
-<meta name="description" content="Browse original musicals for schools and youth programs. Filter by age, cast size, and runtime. From $299.">
+<meta name="description" content="Browse original musicals for schools and youth programs. Filter by age, cast size, and difficulty. Complete Production Kits from $299.">
 <link rel="canonical" href="https://musicaltheatreworldwide.com/shows.html">
 <meta property="og:title" content="Our Shows — Musical Theatre Worldwide">
-<meta property="og:description" content="Browse original musicals for schools and youth programs. Filter by age, cast size, and runtime. From $299.">
+<meta property="og:description" content="Browse original musicals for schools and youth programs. Filter by age, cast size, and difficulty. Complete Production Kits from $299.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://musicaltheatreworldwide.com/shows.html">
 <meta property="og:site_name" content="Musical Theatre Worldwide">
@@ -17,6 +17,7 @@
 <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+<a href="#main" class="skip-link">Skip to content</a>
 <nav class="site-nav" aria-label="Main navigation">
   <div class="nav-inner">
     <a href="index.html" class="nav-logo">MTWW</a>
@@ -27,67 +28,120 @@
     </button>
     <div class="nav-links" id="nav-menu">
     <a href="index.html">Home</a>
-    <a href="shows.html" class="nav-active">Shows</a>
-    <a href="licensing.html">What You Get</a>
-    <a href="resources.html">Resources</a>
+    <a href="shows.html" class="nav-active">Our Shows</a>
+    <a href="licensing.html">Production Kits</a>
+    <a href="resources.html">For Educators</a>
     <a href="about.html">About</a>
     <a href="contact.html">Contact</a>
     </div>
   </div>
 </nav>
-<div class="credential-bar">
-  <div class="credential-inner">
-    <span class="credential-item"><strong>Two-Time Richard Rodgers Award Winners</strong></span>
-    <span class="credential-sep" aria-hidden="true">&middot;</span>
-    <span class="credential-item">25+ Original Musicals</span>
-    <span class="credential-sep" aria-hidden="true">&middot;</span>
-    <span class="credential-item">30 Years of Youth Theater</span>
-  </div>
-</div>
 
-<main>
+<main id="main">
   <section class="section" id="mtww-shows">
-    <h2>MTWW Shows</h2>
-    <p>Available directly from Musical Theatre Worldwide. Every show comes as a complete Production Kit — script, score, lead sheets, backing tracks, and video rights.</p>
+    <h2>Our Shows</h2>
+    <p>Every show comes as a complete Production Kit — script, score, lead sheets, backing tracks, and video rights. Read any script free before you commit.</p>
     <div class="filter-bar" role="toolbar" aria-label="Filter shows">
-      <button class="filter-btn filter-active" data-filter="all">All Shows</button>
-      <button class="filter-btn" data-filter="elementary">Elementary</button>
-      <button class="filter-btn" data-filter="middle">Middle School+</button>
+      <div class="filter-group">
+        <span class="filter-label">Grade:</span>
+        <button class="filter-btn filter-active" data-filter="all" data-group="grade">All</button>
+        <button class="filter-btn" data-filter="elementary" data-group="grade">Elementary</button>
+        <button class="filter-btn" data-filter="middle" data-group="grade">Middle School+</button>
+      </div>
+      <div class="filter-group">
+        <span class="filter-label">Level:</span>
+        <button class="filter-btn filter-active" data-filter="all" data-group="level">All</button>
+        <button class="filter-btn" data-filter="beginner-friendly" data-group="level">Beginner</button>
+        <button class="filter-btn" data-filter="intermediate" data-group="level">Intermediate</button>
+        <button class="filter-btn" data-filter="intermediate-advanced" data-group="level">Advanced</button>
+      </div>
     </div>
     <div class="show-grid">
-<article class="show-card" data-age="8" data-cast="25" data-runtime="70" data-status="active">
+<article class="show-card" data-age="8" data-cast="25" data-runtime="70" data-status="active" data-difficulty="beginner-friendly" data-themes="animals,folklore,storytelling,Kipling">
   <div class="show-card-body">
-    <h3><a href="just-so.html">Just So</a>  <span class="badge badge-diff">beginner-friendly</span></h3>
+    <h3><a href="just-so.html">Just So</a>  <span class="badge badge-diff">Beginner Friendly</span></h3>
     <p class="show-tagline">Rudyard Kipling's beloved stories brought to life on stage</p>
-    <p class="show-meta"><span>70 min + intermission</span><span class="card-sep" aria-hidden="true">&middot;</span><span>25+ cast</span><span class="card-sep" aria-hidden="true">&middot;</span><span>3rd grade and up</span><span class="card-sep" aria-hidden="true">&middot;</span><span>$299</span></p>
-    <p class="show-credits">Music by Leah Okimoto &middot; Lyrics by Dave Hudson</p>
+    <p class="show-credits">Music by Leah Okimoto</p>
+    <dl class="show-specs">
+        <dt>Ages</dt><dd>3rd grade and up</dd>
+        <dt>Cast</dt><dd>25+ roles</dd>
+        <dt>Runtime</dt><dd>70 min + int.</dd>
+        <dt>Level</dt><dd>Beginner Friendly</dd>
+    </dl>
+    <div class="show-tags">
+      <span class="show-tag">animals</span>
+      <span class="show-tag">folklore</span>
+      <span class="show-tag">storytelling</span>
+      <span class="show-tag">Kipling</span>
+    </div>
+    <div class="show-card-footer">
+      <span class="show-price">$299</span>
+      <a href="just-so.html" class="show-card-cta">View details &rarr;</a>
+    </div>
   </div>
 </article>
 
-<article class="show-card" data-age="9" data-cast="25" data-runtime="80" data-status="active">
+<article class="show-card" data-age="9" data-cast="25" data-runtime="80" data-status="active" data-difficulty="intermediate" data-themes="American literature,adventure,friendship,courage">
   <div class="show-card-body">
-    <h3><a href="becky-thatcher.html">Becky Thatcher</a>  <span class="badge badge-diff">intermediate</span></h3>
+    <h3><a href="becky-thatcher.html">Becky Thatcher</a>  <span class="badge badge-diff">Intermediate</span></h3>
     <p class="show-tagline">Mark Twain's Hannibal, MO reimagined from Becky's perspective</p>
-    <p class="show-meta"><span>80 min + intermission</span><span class="card-sep" aria-hidden="true">&middot;</span><span>25+ cast</span><span class="card-sep" aria-hidden="true">&middot;</span><span>4th grade and up</span><span class="card-sep" aria-hidden="true">&middot;</span><span>$299</span></p>
-    <p class="show-credits">Music by Mark Sutton-Smith &middot; Lyrics by Dave Hudson</p>
+    <p class="show-credits">Music by Mark Sutton-Smith</p>
+    <dl class="show-specs">
+        <dt>Ages</dt><dd>4th grade and up</dd>
+        <dt>Cast</dt><dd>25+ roles</dd>
+        <dt>Runtime</dt><dd>80 min + int.</dd>
+        <dt>Level</dt><dd>Intermediate</dd>
+    </dl>
+    <div class="show-tags">
+      <span class="show-tag">American literature</span>
+      <span class="show-tag">adventure</span>
+      <span class="show-tag">friendship</span>
+      <span class="show-tag">courage</span>
+    </div>
+    <div class="show-card-footer">
+      <span class="show-price">$299</span>
+      <a href="becky-thatcher.html" class="show-card-cta">View details &rarr;</a>
+    </div>
   </div>
 </article>
 
-<article class="show-card" data-age="11" data-cast="25" data-runtime="90" data-status="active">
+<article class="show-card" data-age="11" data-cast="25" data-runtime="90" data-status="active" data-difficulty="intermediate-advanced" data-themes="Greek mythology,comedy,heroes,gods and monsters">
   <div class="show-card-body">
-    <h3><a href="off-to-olympus.html">Off to Olympus</a>  <span class="badge badge-diff">intermediate-advanced</span></h3>
+    <h3><a href="off-to-olympus.html">Off to Olympus</a>  <span class="badge badge-diff">Intermediate Advanced</span></h3>
     <p class="show-tagline">A rollicking reimagining of the legends of Greek mythology</p>
-    <p class="show-meta"><span>90 min + intermission</span><span class="card-sep" aria-hidden="true">&middot;</span><span>25+ cast</span><span class="card-sep" aria-hidden="true">&middot;</span><span>7th grade and up (ages 11+)</span><span class="card-sep" aria-hidden="true">&middot;</span><span>$399</span></p>
-    <p class="show-credits">Music by Mark Sutton-Smith &middot; Lyrics by Dave Hudson</p>
+    <p class="show-credits">Music by Mark Sutton-Smith</p>
+    <dl class="show-specs">
+        <dt>Ages</dt><dd>7th grade and up (ages 11+)</dd>
+        <dt>Cast</dt><dd>25+ roles</dd>
+        <dt>Runtime</dt><dd>90 min + int.</dd>
+        <dt>Level</dt><dd>Intermediate Advanced</dd>
+    </dl>
+    <div class="show-tags">
+      <span class="show-tag">Greek mythology</span>
+      <span class="show-tag">comedy</span>
+      <span class="show-tag">heroes</span>
+      <span class="show-tag">gods and monsters</span>
+    </div>
+    <div class="show-card-footer">
+      <span class="show-price">$399</span>
+      <a href="off-to-olympus.html" class="show-card-cta">View details &rarr;</a>
+    </div>
   </div>
 </article>
 
-<article class="show-card" data-age="None" data-cast="None" data-runtime="None" data-status="needs_data">
+<article class="show-card" data-age="None" data-cast="None" data-runtime="None" data-status="needs_data" data-difficulty="None" data-themes="Peter Pan,adventure,growing up,imagination">
   <div class="show-card-body">
     <h3><a href="pots-and-pan.html">Pots and Pan</a> <span class="badge badge-draft">Coming Soon</span> </h3>
     <p class="show-tagline">The next chapter in the story of the boy who refuses to grow up</p>
-    <p class="show-meta"></p>
-    <p class="show-credits">Lyrics by Dave Hudson</p>
+    <p class="show-credits"></p>
+
+    <div class="show-tags">
+      <span class="show-tag">Peter Pan</span>
+      <span class="show-tag">adventure</span>
+      <span class="show-tag">growing up</span>
+      <span class="show-tag">imagination</span>
+    </div>
+
   </div>
 </article>
 
@@ -98,30 +152,36 @@
     <h2>Other Works by Dave Hudson</h2>
     <p>These shows are licensed through other publishers but are part of Dave Hudson's catalog of 25+ musicals.</p>
     <div class="show-grid">
-<article class="show-card" data-age="None" data-cast="None" data-runtime="60" data-status="external_license">
+<article class="show-card" data-age="None" data-cast="None" data-runtime="60" data-status="external_license" data-difficulty="None" data-themes="Ancient Egypt,identity,comedy">
   <div class="show-card-body">
     <h3><a href="https://www.bbbpress.com" target="_blank" rel="noopener">Tut, Tut!</a> <span class="badge badge-external">Beat by Beat Press</span> </h3>
     <p class="show-tagline">King Tut meets the Prince and the Pauper in this musical comedy</p>
-    <p class="show-meta"><span>60 min</span></p>
-    <p class="show-credits">Music by Denver Casado &middot; Lyrics by Dave Hudson</p>
+    <p class="show-credits">Music by Denver Casado</p>
+
+
+
   </div>
 </article>
 
-<article class="show-card" data-age="None" data-cast="None" data-runtime="30" data-status="external_license">
+<article class="show-card" data-age="None" data-cast="None" data-runtime="30" data-status="external_license" data-difficulty="None" data-themes="energy,neurodivergence,community,acceptance">
   <div class="show-card-body">
     <h3><a href="https://www.bbbpress.com" target="_blank" rel="noopener">Bounce!</a> <span class="badge badge-external">Beat by Beat Press</span> </h3>
     <p class="show-tagline">A 30-minute musical about a kid with endless energy</p>
-    <p class="show-meta"><span>30 min</span></p>
-    <p class="show-credits">Music by Denver Casado &middot; Lyrics by Dave Hudson</p>
+    <p class="show-credits">Music by Denver Casado</p>
+
+
+
   </div>
 </article>
 
-<article class="show-card" data-age="None" data-cast="None" data-runtime="None" data-status="external_license">
+<article class="show-card" data-age="None" data-cast="None" data-runtime="None" data-status="external_license" data-difficulty="None" data-themes="pandemic,resilience,theater community,virtual performance">
   <div class="show-card-body">
     <h3><a href="https://www.bbbpress.com" target="_blank" rel="noopener">The Show Must Go Online</a> <span class="badge badge-external">Beat by Beat Press</span> </h3>
     <p class="show-tagline">The world's first virtual children's musical — performed by over 1,000 productions worldwide</p>
-    <p class="show-meta"></p>
-    <p class="show-credits">Music by Denver Casado &middot; Book by Jessica Penzias &middot; Lyrics by Dave Hudson</p>
+    <p class="show-credits">Music by Denver Casado</p>
+
+
+
   </div>
 </article>
 
@@ -132,31 +192,55 @@
 
 <script>
 document.addEventListener('DOMContentLoaded', function() {
-  var filters = document.querySelectorAll('.filter-btn');
   var cards = document.querySelectorAll('.show-card[data-status="active"], .show-card[data-status="needs_data"]');
+  var activeFilters = { grade: 'all', level: 'all' };
 
-  filters.forEach(function(btn) {
+  function applyFilters() {
+    cards.forEach(function(card) {
+      var show = true;
+      var age = parseInt(card.getAttribute('data-age'));
+      var diff = card.getAttribute('data-difficulty');
+
+      if (activeFilters.grade === 'elementary') {
+        show = show && (age && age <= 9);
+      } else if (activeFilters.grade === 'middle') {
+        show = show && (age && age >= 9);
+      }
+
+      if (activeFilters.level !== 'all') {
+        show = show && (diff === activeFilters.level);
+      }
+
+      card.style.display = show ? '' : 'none';
+    });
+  }
+
+  document.querySelectorAll('.filter-btn').forEach(function(btn) {
     btn.addEventListener('click', function() {
-      filters.forEach(function(b) { b.classList.remove('filter-active'); });
+      var group = btn.getAttribute('data-group');
+      var filter = btn.getAttribute('data-filter');
+      activeFilters[group] = filter;
+
+      // Update active state within group
+      document.querySelectorAll('.filter-btn[data-group="' + group + '"]').forEach(function(b) {
+        b.classList.remove('filter-active');
+      });
       btn.classList.add('filter-active');
 
-      var filter = btn.getAttribute('data-filter');
-      cards.forEach(function(card) {
-        if (filter === 'all') {
-          card.style.display = '';
-        } else if (filter === 'elementary') {
-          var age = parseInt(card.getAttribute('data-age'));
-          card.style.display = (age && age <= 9) ? '' : 'none';
-        } else if (filter === 'middle') {
-          var age = parseInt(card.getAttribute('data-age'));
-          card.style.display = (age && age >= 9 && age <= 13) ? '' : 'none';
-        } else if (filter === 'short') {
-          var rt = parseInt(card.getAttribute('data-runtime'));
-          card.style.display = (rt && rt <= 60) ? '' : 'none';
-        }
-      });
+      applyFilters();
     });
   });
+
+  // Handle hash-based navigation from homepage browse cards
+  var hash = window.location.hash.replace('#', '');
+  if (hash === 'elementary' || hash === 'middle') {
+    activeFilters.grade = hash;
+    document.querySelectorAll('.filter-btn[data-group="grade"]').forEach(function(b) {
+      b.classList.remove('filter-active');
+      if (b.getAttribute('data-filter') === hash) b.classList.add('filter-active');
+    });
+    applyFilters();
+  }
 });
 </script>
 <footer class="site-footer">
@@ -185,6 +269,25 @@ document.addEventListener('DOMContentLoaded', function() {
       menu.classList.toggle('nav-open');
     });
   }
+
+  // FAQ accordion
+  var dts = document.querySelectorAll('.faq dt');
+  dts.forEach(function(dt) {
+    dt.addEventListener('click', function() {
+      var dd = dt.nextElementSibling;
+      var isOpen = dt.classList.contains('faq-open');
+      // Close all
+      dts.forEach(function(d) {
+        d.classList.remove('faq-open');
+        if (d.nextElementSibling) d.nextElementSibling.classList.remove('faq-open');
+      });
+      // Toggle this one
+      if (!isOpen) {
+        dt.classList.add('faq-open');
+        if (dd) dd.classList.add('faq-open');
+      }
+    });
+  });
 });
 </script>
 </body>

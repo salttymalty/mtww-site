@@ -17,6 +17,7 @@
 <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+<a href="#main" class="skip-link">Skip to content</a>
 <nav class="site-nav" aria-label="Main navigation">
   <div class="nav-inner">
     <a href="index.html" class="nav-logo">MTWW</a>
@@ -27,33 +28,33 @@
     </button>
     <div class="nav-links" id="nav-menu">
     <a href="index.html">Home</a>
-    <a href="shows.html">Shows</a>
-    <a href="licensing.html">What You Get</a>
-    <a href="resources.html">Resources</a>
+    <a href="shows.html">Our Shows</a>
+    <a href="licensing.html">Production Kits</a>
+    <a href="resources.html">For Educators</a>
     <a href="about.html">About</a>
     <a href="contact.html" class="nav-active">Contact</a>
     </div>
   </div>
 </nav>
 
-<main>
+<main id="main">
   <section class="section">
     <h2>Get in Touch</h2>
     <div class="contact-grid">
       <div class="contact-card">
         <h3>Read a Script Free</h3>
         <p>Tell us which show and your organization name. We'll send you the full script within 24 hours — no commitment, no credit card.</p>
-        <a href="mailto:admin@musicaltheatreworldwide.com?subject=Free%20Perusal%20Request" class="btn btn-primary">Read a Script Free</a>
+        <a href="mailto:admin@musicaltheatreworldwide.com?subject=Free%20Perusal%20Request" class="btn btn-primary">Request a Free Perusal</a>
       </div>
       <div class="contact-card">
         <h3>Order a Production Kit</h3>
-        <p>Ready to go? Questions about Production Kits, pricing, or anything else? We'd love to hear from you.</p>
+        <p>Ready to go? Questions about Production Kits, pricing, or anything else?</p>
         <p><a href="mailto:admin@musicaltheatreworldwide.com">admin@musicaltheatreworldwide.com</a></p>
         <p>312-953-3703</p>
       </div>
       <div class="contact-card">
-        <h3>About The Actors Garden</h3>
-        <p>Looking for information about our youth theater program in Oak Park, Illinois?</p>
+        <h3>The Actors Garden</h3>
+        <p>Looking for our youth theater program in Oak Park, Illinois?</p>
         <p><a href="https://theactorsgarden.com">Visit The Actors Garden &rarr;</a></p>
       </div>
     </div>
@@ -85,6 +86,25 @@ document.addEventListener('DOMContentLoaded', function() {
       menu.classList.toggle('nav-open');
     });
   }
+
+  // FAQ accordion
+  var dts = document.querySelectorAll('.faq dt');
+  dts.forEach(function(dt) {
+    dt.addEventListener('click', function() {
+      var dd = dt.nextElementSibling;
+      var isOpen = dt.classList.contains('faq-open');
+      // Close all
+      dts.forEach(function(d) {
+        d.classList.remove('faq-open');
+        if (d.nextElementSibling) d.nextElementSibling.classList.remove('faq-open');
+      });
+      // Toggle this one
+      if (!isOpen) {
+        dt.classList.add('faq-open');
+        if (dd) dd.classList.add('faq-open');
+      }
+    });
+  });
 });
 </script>
 </body>

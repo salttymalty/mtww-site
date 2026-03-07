@@ -33,6 +33,7 @@
 </script>
 </head>
 <body>
+<a href="#main" class="skip-link">Skip to content</a>
 <nav class="site-nav" aria-label="Main navigation">
   <div class="nav-inner">
     <a href="index.html" class="nav-logo">MTWW</a>
@@ -43,31 +44,22 @@
     </button>
     <div class="nav-links" id="nav-menu">
     <a href="index.html">Home</a>
-    <a href="shows.html">Shows</a>
-    <a href="licensing.html">What You Get</a>
-    <a href="resources.html">Resources</a>
+    <a href="shows.html">Our Shows</a>
+    <a href="licensing.html">Production Kits</a>
+    <a href="resources.html">For Educators</a>
     <a href="about.html" class="nav-active">About</a>
     <a href="contact.html">Contact</a>
     </div>
   </div>
 </nav>
-<div class="credential-bar">
-  <div class="credential-inner">
-    <span class="credential-item"><strong>Two-Time Richard Rodgers Award Winners</strong></span>
-    <span class="credential-sep" aria-hidden="true">&middot;</span>
-    <span class="credential-item">25+ Original Musicals</span>
-    <span class="credential-sep" aria-hidden="true">&middot;</span>
-    <span class="credential-item">30 Years of Youth Theater</span>
-  </div>
-</div>
 
-<main>
+<main id="main">
   <section class="section">
     <h2>About Musical Theatre Worldwide</h2>
     <p>Musical Theatre Worldwide was born from The Actors Garden in Oak Park, Illinois — a children's theater program that has been developing young performers since 1996.</p>
     <p>Artistic Director GiGi Hudson identified a gap in the market: most musicals available for schools were "Junior" versions — shortened, simplified adaptations of adult shows. The roles, humor, and emotional complexity were designed for grown-ups, then cut down. Kids deserved better.</p>
     <p>Playwright Dave Hudson began writing original works specifically for young performers. Every show is workshopped, produced, and revised at The Actors Garden, where real kids test every scene, every song, and every joke. By the time a show is offered for licensing, it has been proven on stage — not just on paper.</p>
-    <p>The result: a catalog of 25+ original musicals that have been performed coast to coast across the United States and internationally in Scotland and Thailand.</p>
+    <p>The result: a catalog of 25+ original musicals that have been performed across the United States and internationally in Scotland and Thailand.</p>
   </section>
 
   <section class="section section-alt" id="awards">
@@ -144,8 +136,7 @@
   <section class="section" id="actors-garden">
     <h2>The Actors Garden Connection</h2>
     <p>The Actors Garden is a children's theater education program in Oak Park, Illinois, founded in 1996 by GiGi and Dave Hudson. For over 30 years, AG has been the creative laboratory where every MTWW musical is developed.</p>
-    <p>This means something specific: when you license a MTWW show, you're not getting a script that was workshopped in a reading room. You're getting a show that has been fully produced — cast, rehearsed, staged, performed, revised, and performed again — with real kids, in a real theater, in front of real audiences.</p>
-    <p>That workshopping process is our quality guarantee.</p>
+    <p>When you license a MTWW show, you're getting a show that has been fully produced — cast, rehearsed, staged, performed, revised, and performed again — with real kids, in a real theater, in front of real audiences. That workshopping process is our quality guarantee.</p>
   </section>
 </main>
 <footer class="site-footer">
@@ -174,6 +165,25 @@ document.addEventListener('DOMContentLoaded', function() {
       menu.classList.toggle('nav-open');
     });
   }
+
+  // FAQ accordion
+  var dts = document.querySelectorAll('.faq dt');
+  dts.forEach(function(dt) {
+    dt.addEventListener('click', function() {
+      var dd = dt.nextElementSibling;
+      var isOpen = dt.classList.contains('faq-open');
+      // Close all
+      dts.forEach(function(d) {
+        d.classList.remove('faq-open');
+        if (d.nextElementSibling) d.nextElementSibling.classList.remove('faq-open');
+      });
+      // Toggle this one
+      if (!isOpen) {
+        dt.classList.add('faq-open');
+        if (dd) dd.classList.add('faq-open');
+      }
+    });
+  });
 });
 </script>
 </body>

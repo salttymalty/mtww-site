@@ -25,9 +25,9 @@
   ],
   "nav": [
     {"label": "Home", "href": "index.html"},
-    {"label": "Shows", "href": "shows.html"},
-    {"label": "What You Get", "href": "licensing.html"},
-    {"label": "Resources", "href": "resources.html"},
+    {"label": "Our Shows", "href": "shows.html"},
+    {"label": "Production Kits", "href": "licensing.html"},
+    {"label": "For Educators", "href": "resources.html"},
     {"label": "About", "href": "about.html"},
     {"label": "Contact", "href": "contact.html"}
   ],

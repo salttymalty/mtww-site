@@ -31,6 +31,7 @@
 </script>
 </head>
 <body>
+<a href="#main" class="skip-link">Skip to content</a>
 <nav class="site-nav" aria-label="Main navigation">
   <div class="nav-inner">
     <a href="index.html" class="nav-logo">MTWW</a>
@@ -41,21 +42,23 @@
     </button>
     <div class="nav-links" id="nav-menu">
     <a href="index.html">Home</a>
-    <a href="shows.html" class="nav-active">Shows</a>
-    <a href="licensing.html">What You Get</a>
-    <a href="resources.html">Resources</a>
+    <a href="shows.html" class="nav-active">Our Shows</a>
+    <a href="licensing.html">Production Kits</a>
+    <a href="resources.html">For Educators</a>
     <a href="about.html">About</a>
     <a href="contact.html">Contact</a>
     </div>
   </div>
 </nav>
 
-<main>
+<main id="main">
   <section class="show-hero">
     <h1>Bounce!</h1>
     <p class="show-hero-tagline">A 30-minute musical about a kid with endless energy</p>
     <p class="show-hero-credential">By two-time Richard Rodgers Award winner Dave Hudson</p>
-    <p class="show-hero-sub">Video rights included &middot; <a href="mailto:admin@musicaltheatreworldwide.com?subject=Free+Perusal+%E2%80%94+Bounce!">Read the script free</a></p>
+    <div class="show-hero-meta">
+      <span>30 min</span>
+    </div>
     
   </section>
 
@@ -65,14 +68,17 @@
     </div>
   </section>
 
-  <section class="section cta-section">
-    <a href="mailto:admin@musicaltheatreworldwide.com?subject=Free+Perusal+%E2%80%94+Bounce!" class="btn btn-primary btn-lg">Read the Script Free</a>
-    <p class="cta-hint">Email us and we'll send you the full script within 24 hours. No commitment, no credit card.</p>
-  </section>
-
   <section class="section">
     <h2>About the Show</h2>
     <p>Bounce! follows Reggie, a 10-year-old whose boundless energy drives everyone around them a little crazy — until the community discovers that what looks like a problem might actually be a superpower. A short, energetic show ideal for younger casts and shorter attention spans.</p>
+  </section>
+
+  <section class="section">
+    <h2>Curriculum Connections</h2>
+    <p>Pair this show with classroom learning:</p>
+    <ul class="curriculum-list">
+      <li>Social-Emotional Learning</li>
+    </ul>
   </section>
 
   <section class="section section-alt">
@@ -83,14 +89,6 @@
 <tr><th>Based On</th><td>Original</td></tr>
 <tr><th>Premiere</th><td>2024</td></tr>
     </table>
-  </section>
-
-  <section class="section">
-    <h2>Curriculum Connections</h2>
-    <p>Pair this show with classroom learning:</p>
-    <ul class="curriculum-list">
-      <li>Social-Emotional Learning</li>
-    </ul>
   </section>
 </main>
 <footer class="site-footer">
@@ -119,6 +117,25 @@ document.addEventListener('DOMContentLoaded', function() {
       menu.classList.toggle('nav-open');
     });
   }
+
+  // FAQ accordion
+  var dts = document.querySelectorAll('.faq dt');
+  dts.forEach(function(dt) {
+    dt.addEventListener('click', function() {
+      var dd = dt.nextElementSibling;
+      var isOpen = dt.classList.contains('faq-open');
+      // Close all
+      dts.forEach(function(d) {
+        d.classList.remove('faq-open');
+        if (d.nextElementSibling) d.nextElementSibling.classList.remove('faq-open');
+      });
+      // Toggle this one
+      if (!isOpen) {
+        dt.classList.add('faq-open');
+        if (dd) dd.classList.add('faq-open');
+      }
+    });
+  });
 });
 </script>
 </body>

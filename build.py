@@ -75,6 +75,7 @@ def head(title, description="", og_image="", canonical_path="", schema=None):
 <link rel="stylesheet" href="styles.css">{schema_block}
 </head>
 <body>
+<a href="#main" class="skip-link">Skip to content</a>
 """
 
 
@@ -99,20 +100,6 @@ def nav(active=""):
     </div>
   </div>
 </nav>
-"""
-
-
-def credential_bar():
-    """The trust-signal bar that appears across key pages."""
-    return """<div class="credential-bar">
-  <div class="credential-inner">
-    <span class="credential-item"><strong>Two-Time Richard Rodgers Award Winners</strong></span>
-    <span class="credential-sep" aria-hidden="true">&middot;</span>
-    <span class="credential-item">25+ Original Musicals</span>
-    <span class="credential-sep" aria-hidden="true">&middot;</span>
-    <span class="credential-item">30 Years of Youth Theater</span>
-  </div>
-</div>
 """
 
 
@@ -145,6 +132,25 @@ document.addEventListener('DOMContentLoaded', function() {{
       menu.classList.toggle('nav-open');
     }});
   }}
+
+  // FAQ accordion
+  var dts = document.querySelectorAll('.faq dt');
+  dts.forEach(function(dt) {{
+    dt.addEventListener('click', function() {{
+      var dd = dt.nextElementSibling;
+      var isOpen = dt.classList.contains('faq-open');
+      // Close all
+      dts.forEach(function(d) {{
+        d.classList.remove('faq-open');
+        if (d.nextElementSibling) d.nextElementSibling.classList.remove('faq-open');
+      }});
+      // Toggle this one
+      if (!isOpen) {{
+        dt.classList.add('faq-open');
+        if (dd) dd.classList.add('faq-open');
+      }}
+    }});
+  }});
 }});
 </script>
 </body>
@@ -153,37 +159,50 @@ document.addEventListener('DOMContentLoaded', function() {{
 
 
 def show_card(show):
-    """Render a show as a card for the listing page."""
-    meta_parts = []
-    if show.get("runtime_minutes"):
-        rt = show["runtime_minutes"]
-        inter = " + intermission" if show.get("has_intermission") else ""
-        meta_parts.append(f"{rt} min{inter}")
-    if show.get("cast_size"):
-        meta_parts.append(f"{show['cast_size']}+ cast")
-    if show.get("age_range"):
-        meta_parts.append(show["age_range"])
-    if show.get("licensing_price"):
-        meta_parts.append(f"${show['licensing_price']}")
-
-    meta_html = '<span class="card-sep" aria-hidden="true">&middot;</span>'.join(
-        f'<span>{m}</span>' for m in meta_parts
-    ) if meta_parts else ""
-
+    """Render a show as a comparison-ready card for listing pages."""
+    # Status badges
     status_badge = ""
     if show["status"] == "needs_data":
         status_badge = '<span class="badge badge-draft">Coming Soon</span>'
     elif show["status"] == "external_license":
         status_badge = '<span class="badge badge-external">Beat by Beat Press</span>'
 
+    # Difficulty badge
+    difficulty = show.get('difficulty', '')
+    diff_badge = f'<span class="badge badge-diff">{difficulty.replace("-", " ").title()}</span>' if difficulty else ""
+
+    # Structured metadata
+    specs_html = ""
+    if show.get("available_on_mtww") and show["status"] != "needs_data":
+        spec_pairs = []
+        if show.get("age_range"):
+            spec_pairs.append(("Ages", show["age_range"]))
+        if show.get("cast_size"):
+            spec_pairs.append(("Cast", f"{show['cast_size']}+ roles"))
+        if show.get("runtime_minutes"):
+            inter = " + int." if show.get("has_intermission") else ""
+            spec_pairs.append(("Runtime", f"{show['runtime_minutes']} min{inter}"))
+        if show.get("difficulty"):
+            spec_pairs.append(("Level", show["difficulty"].replace("-", " ").title()))
+
+        if spec_pairs:
+            items = "\n".join(
+                f'        <dt>{label}</dt><dd>{value}</dd>'
+                for label, value in spec_pairs
+            )
+            specs_html = f'    <dl class="show-specs">\n{items}\n    </dl>'
+
+    # Curriculum tags
+    tags_html = ""
+    themes = show.get("themes", [])
+    if themes and show.get("available_on_mtww"):
+        tag_items = "\n".join(f'      <span class="show-tag">{t}</span>' for t in themes[:4])
+        tags_html = f'    <div class="show-tags">\n{tag_items}\n    </div>'
+
     # Credits line
     credits = []
     if show.get("music_by"):
         credits.append(f"Music by {show['music_by']}")
-    if show.get("book_by") and show["book_by"] != show.get("lyrics_by"):
-        credits.append(f"Book by {show['book_by']}")
-    if show.get("lyrics_by"):
-        credits.append(f"Lyrics by {show['lyrics_by']}")
     credits_html = " &middot; ".join(credits)
 
     # Link — external shows link out
@@ -191,15 +210,23 @@ def show_card(show):
     target = ' target="_blank" rel="noopener"' if show.get("external_url") else ""
 
     tagline = show.get('tagline', '')
-    difficulty = show.get('difficulty', '')
-    diff_badge = f'<span class="badge badge-diff">{difficulty}</span>' if difficulty else ""
 
-    return f"""<article class="show-card" data-age="{show.get('min_age', '')}" data-cast="{show.get('cast_size', '')}" data-runtime="{show.get('runtime_minutes', '')}" data-status="{show['status']}">
+    # Card footer with price and CTA
+    footer_html = ""
+    if show.get("licensing_price") and show.get("available_on_mtww"):
+        footer_html = f"""    <div class="show-card-footer">
+      <span class="show-price">${show['licensing_price']}</span>
+      <a href="{href}" class="show-card-cta">View details &rarr;</a>
+    </div>"""
+
+    return f"""<article class="show-card" data-age="{show.get('min_age', '')}" data-cast="{show.get('cast_size', '')}" data-runtime="{show.get('runtime_minutes', '')}" data-status="{show['status']}" data-difficulty="{show.get('difficulty', '')}" data-themes="{','.join(show.get('themes', []))}">
   <div class="show-card-body">
     <h3><a href="{href}"{target}>{show['title']}</a> {status_badge} {diff_badge}</h3>
     <p class="show-tagline">{tagline}</p>
-    <p class="show-meta">{meta_html}</p>
     <p class="show-credits">{credits_html}</p>
+{specs_html}
+{tags_html}
+{footer_html}
   </div>
 </article>
 """
@@ -272,108 +299,127 @@ def faq_schema(faq_items):
 def build_index():
     site = load_json("site.json")
     shows = load_json("shows.json")
-    active = [s for s in shows if s.get("available_on_mtww")]
+    active = [s for s in shows if s.get("available_on_mtww") and s["status"] == "active"]
 
     cards = "\n".join(show_card(s) for s in active)
 
-    # Credential items
-    cred_items = "\n".join(
-        f'      <li>{c}</li>' for c in site.get("credentials", [])
+    # Kit items summary
+    kit_items = "\n".join(
+        f'        <li><span class="kit-check" aria-hidden="true">&#10003;</span> {item}</li>'
+        for item in site["licensing_includes_default"]
     )
 
-    # Comparison table
-    comp = site.get("comparison", {}).get("vs_junior", [])
-    comp_rows = ""
-    for row in comp:
-        mtww_check = '<span class="check" aria-label="Yes">&#10003;</span>' if row.get("mtww") else '<span class="x" aria-label="No">&#10007;</span>'
-        junior_check = '<span class="check" aria-label="Yes">&#10003;</span>' if row.get("junior") else '<span class="x" aria-label="No">&#10007;</span>'
-        comp_rows += f"""        <tr>
-          <td>{row['feature']}</td>
-          <td class="center">{mtww_check}</td>
-          <td class="center">{junior_check}</td>
-          <td class="note">{row.get('note', '')}</td>
-        </tr>\n"""
+    # Quick browse cards
+    browse_cards = """
+      <a href="shows.html#elementary" class="browse-card">
+        <span class="browse-card-icon" aria-hidden="true">&#127891;</span>
+        <span class="browse-card-label">Elementary</span>
+        <span class="browse-card-detail">3rd grade and up</span>
+      </a>
+      <a href="shows.html#middle" class="browse-card">
+        <span class="browse-card-icon" aria-hidden="true">&#127917;</span>
+        <span class="browse-card-label">Middle School+</span>
+        <span class="browse-card-detail">7th grade and up</span>
+      </a>
+      <a href="shows.html#literature" class="browse-card">
+        <span class="browse-card-icon" aria-hidden="true">&#128218;</span>
+        <span class="browse-card-label">Literary Adaptations</span>
+        <span class="browse-card-detail">Kipling, Twain, mythology</span>
+      </a>
+      <a href="shows.html#large-cast" class="browse-card">
+        <span class="browse-card-icon" aria-hidden="true">&#127917;</span>
+        <span class="browse-card-label">Large Cast</span>
+        <span class="browse-card-detail">25+ roles + chorus</span>
+      </a>"""
 
     schema = org_schema()
 
     html = head(
         "Home",
-        "Award-winning original musicals for schools and youth programs. Written for young performers, workshopped at The Actors Garden. From $299.",
+        "Original musicals for schools and youth programs. Written for young performers, tested on stage. Scripts, scores, and backing tracks from $299.",
         canonical_path="",
         schema=schema
-    ) + nav("Home") + credential_bar() + f"""
-<main>
+    ) + nav("Home") + f"""
+<main id="main">
   <section class="hero">
     <div class="hero-inner">
-      <h1>Original Musicals for Young Performers</h1>
-      <p class="hero-tagline">{site['tagline']}</p>
-      <p class="hero-sub">Every show is workshopped, produced, and perfected at The Actors Garden before being offered for licensing. What you get has been proven on stage with real kids.</p>
+      <h1>Find the Right Musical for Your Students</h1>
+      <p class="hero-sub">Original musicals written for young performers — tested on stage with real kids at The Actors Garden over 30 years. Complete Production Kits from ${site['licensing_default_price']}.</p>
+      <p class="hero-credential">By two-time Richard Rodgers Award winner Dave Hudson</p>
       <div class="hero-ctas">
-        <a href="shows.html" class="btn btn-primary">Browse Our Shows</a>
-        <a href="licensing.html" class="btn btn-secondary">What's in a Production Kit</a>
+        <a href="shows.html" class="btn btn-primary">Browse Shows</a>
+        <a href="mailto:{site['email']}?subject=Free%20Perusal%20Request" class="btn btn-secondary">Read a Script Free</a>
       </div>
     </div>
   </section>
 
-  <section class="section" id="featured">
+  <section class="section browse-section" id="browse">
+    <h2>Find Shows By</h2>
+    <div class="browse-grid">
+{browse_cards}
+    </div>
+  </section>
+
+  <section class="section section-alt" id="featured">
     <h2>Our Shows</h2>
-    <p>Each show comes as a complete Production Kit — script, score, lead sheets, backing tracks, and video rights — from ${site['licensing_default_price']}.</p>
+    <p>Each show comes as a complete Production Kit with script, score, lead sheets, backing tracks, and video rights.</p>
     <div class="show-grid">
 {cards}
     </div>
     <p class="section-cta"><a href="shows.html">View all shows &rarr;</a></p>
   </section>
 
+  <section class="section" id="production-kit">
+    <h2>What You Get: Complete Production Kits</h2>
+    <div class="kit-summary">
+      <ul class="kit-summary-list">
+{kit_items}
+      </ul>
+      <div class="kit-summary-cta">
+        <p class="licensing-price">From ${site['licensing_default_price']}</p>
+        <p style="margin-bottom: var(--space-sm); color: var(--color-text-light);">One flat fee. No rentals. No returns.</p>
+        <a href="licensing.html" class="btn btn-outline">Full details &rarr;</a>
+      </div>
+    </div>
+  </section>
+
   <section class="section section-alt" id="why">
-    <h2>Why Choose MTWW?</h2>
+    <h2>Why Educators Choose MTWW</h2>
     <div class="value-grid">
       <div class="value-card">
-        <h3>Written for Young Performers</h3>
-        <p>Not shortened adult shows. Every musical is originally written for young actors, with age-appropriate content, comfortable vocal ranges, and roles designed for developing performers.</p>
+        <h3>Written for Your Students</h3>
+        <p>Every role is designed for young performers — age-appropriate content, comfortable vocal ranges, and parts that let kids be kids on stage. Not shortened adult shows.</p>
       </div>
       <div class="value-card">
-        <h3>Proven on Stage</h3>
-        <p>Every show is workshopped and produced at The Actors Garden before licensing. What you receive has been tested, revised, and perfected with real kids over 30 years.</p>
+        <h3>Tested on Stage</h3>
+        <p>Every show has been fully produced at The Actors Garden before licensing. The material that doesn't work gets revised. What you receive has been proven with real kids.</p>
       </div>
       <div class="value-card">
-        <h3>Complete Production Kits</h3>
-        <p>From ${site['licensing_default_price']} for everything: script, score, lead sheets, backing tracks, and video recording rights. No per-script rental. No returns. No surprises.</p>
+        <h3>Connects to Curriculum</h3>
+        <p>Kipling, Twain, Greek mythology, J.M. Barrie — shows that pair naturally with what your students are already learning in the classroom.</p>
       </div>
       <div class="value-card">
-        <h3>Award-Winning Writers</h3>
-        <p>Head playwright Dave Hudson is a two-time winner of the Richard Rodgers Award for new musicals — the most prestigious award in musical theatre writing.</p>
+        <h3>Simple, Fair Pricing</h3>
+        <p>One flat fee from ${site['licensing_default_price']}. Keep everything. Copy scripts for your whole cast. Record your production. No surprises.</p>
       </div>
     </div>
   </section>
 
-  <section class="section" id="compare">
-    <h2>MTWW vs. Junior Versions</h2>
-    <p>Most school musicals are shortened versions of adult shows. MTWW shows are built from the ground up for young performers.</p>
-    <div class="table-wrap">
-      <table class="compare-table">
-        <thead>
-          <tr>
-            <th>Feature</th>
-            <th class="center">MTWW</th>
-            <th class="center">Junior Versions</th>
-            <th>Why It Matters</th>
-          </tr>
-        </thead>
-        <tbody>
-{comp_rows}        </tbody>
-      </table>
-    </div>
-  </section>
-
-  <section class="section section-alt" id="resources-preview">
+  <section class="section" id="resources-preview">
     <h2>Resources for Educators</h2>
-    <p>Guides, tips, and perspective from 30 years of producing youth musicals.</p>
+    <p>Practical guides from 30 years of producing musicals with young performers.</p>
     <div class="resource-preview-grid">
       <a href="how-to-choose-a-school-musical.html" class="resource-link">How to Choose a Musical for Your School</a>
       <a href="why-original-musicals-work-better.html" class="resource-link">Why Original Musicals Work Better for Young Performers</a>
       <a href="musical-theatre-for-elementary-students.html" class="resource-link">Musical Theatre for Elementary Students: What Works</a>
     </div>
     <p class="section-cta"><a href="resources.html">All resources &rarr;</a></p>
+  </section>
+
+  <section class="final-cta">
+    <h2>Read Any Script Free</h2>
+    <p>Tell us which show interests you. We'll send the full script within 24 hours — no commitment, no credit card.</p>
+    <a href="mailto:{site['email']}?subject=Free%20Perusal%20Request" class="btn btn-primary btn-lg">Request a Free Perusal</a>
   </section>
 </main>
 """ + footer()
@@ -400,52 +446,88 @@ def build_shows():
   </section>
 """
 
-    # Filter controls
+    # Filter controls with labeled groups
+    filter_html = """    <div class="filter-bar" role="toolbar" aria-label="Filter shows">
+      <div class="filter-group">
+        <span class="filter-label">Grade:</span>
+        <button class="filter-btn filter-active" data-filter="all" data-group="grade">All</button>
+        <button class="filter-btn" data-filter="elementary" data-group="grade">Elementary</button>
+        <button class="filter-btn" data-filter="middle" data-group="grade">Middle School+</button>
+      </div>
+      <div class="filter-group">
+        <span class="filter-label">Level:</span>
+        <button class="filter-btn filter-active" data-filter="all" data-group="level">All</button>
+        <button class="filter-btn" data-filter="beginner-friendly" data-group="level">Beginner</button>
+        <button class="filter-btn" data-filter="intermediate" data-group="level">Intermediate</button>
+        <button class="filter-btn" data-filter="intermediate-advanced" data-group="level">Advanced</button>
+      </div>
+    </div>"""
+
     filter_js = """
 <script>
 document.addEventListener('DOMContentLoaded', function() {
-  var filters = document.querySelectorAll('.filter-btn');
   var cards = document.querySelectorAll('.show-card[data-status="active"], .show-card[data-status="needs_data"]');
+  var activeFilters = { grade: 'all', level: 'all' };
 
-  filters.forEach(function(btn) {
+  function applyFilters() {
+    cards.forEach(function(card) {
+      var show = true;
+      var age = parseInt(card.getAttribute('data-age'));
+      var diff = card.getAttribute('data-difficulty');
+
+      if (activeFilters.grade === 'elementary') {
+        show = show && (age && age <= 9);
+      } else if (activeFilters.grade === 'middle') {
+        show = show && (age && age >= 9);
+      }
+
+      if (activeFilters.level !== 'all') {
+        show = show && (diff === activeFilters.level);
+      }
+
+      card.style.display = show ? '' : 'none';
+    });
+  }
+
+  document.querySelectorAll('.filter-btn').forEach(function(btn) {
     btn.addEventListener('click', function() {
-      filters.forEach(function(b) { b.classList.remove('filter-active'); });
+      var group = btn.getAttribute('data-group');
+      var filter = btn.getAttribute('data-filter');
+      activeFilters[group] = filter;
+
+      // Update active state within group
+      document.querySelectorAll('.filter-btn[data-group="' + group + '"]').forEach(function(b) {
+        b.classList.remove('filter-active');
+      });
       btn.classList.add('filter-active');
 
-      var filter = btn.getAttribute('data-filter');
-      cards.forEach(function(card) {
-        if (filter === 'all') {
-          card.style.display = '';
-        } else if (filter === 'elementary') {
-          var age = parseInt(card.getAttribute('data-age'));
-          card.style.display = (age && age <= 9) ? '' : 'none';
-        } else if (filter === 'middle') {
-          var age = parseInt(card.getAttribute('data-age'));
-          card.style.display = (age && age >= 9 && age <= 13) ? '' : 'none';
-        } else if (filter === 'short') {
-          var rt = parseInt(card.getAttribute('data-runtime'));
-          card.style.display = (rt && rt <= 60) ? '' : 'none';
-        }
-      });
+      applyFilters();
     });
   });
+
+  // Handle hash-based navigation from homepage browse cards
+  var hash = window.location.hash.replace('#', '');
+  if (hash === 'elementary' || hash === 'middle') {
+    activeFilters.grade = hash;
+    document.querySelectorAll('.filter-btn[data-group="grade"]').forEach(function(b) {
+      b.classList.remove('filter-active');
+      if (b.getAttribute('data-filter') === hash) b.classList.add('filter-active');
+    });
+    applyFilters();
+  }
 });
 </script>"""
 
     html = head(
         "Our Shows",
-        "Browse original musicals for schools and youth programs. Filter by age, cast size, and runtime. From $299.",
+        "Browse original musicals for schools and youth programs. Filter by age, cast size, and difficulty. Complete Production Kits from $299.",
         canonical_path="shows.html"
-    ) + nav("Shows") + credential_bar() + f"""
-<main>
+    ) + nav("Our Shows") + f"""
+<main id="main">
   <section class="section" id="mtww-shows">
-    <h2>MTWW Shows</h2>
-    <p>Available directly from Musical Theatre Worldwide. Every show comes as a complete Production Kit — script, score, lead sheets, backing tracks, and video rights.</p>
-    <div class="filter-bar" role="toolbar" aria-label="Filter shows">
-      <button class="filter-btn filter-active" data-filter="all">All Shows</button>
-      <button class="filter-btn" data-filter="elementary">Elementary</button>
-      <button class="filter-btn" data-filter="middle">Middle School+</button>
-    </div>
+    <h2>Our Shows</h2>
+    <p>Every show comes as a complete Production Kit — script, score, lead sheets, backing tracks, and video rights. Read any script free before you commit.</p>
+{filter_html}
     <div class="show-grid">
 {active_cards}
     </div>
@@ -458,12 +540,12 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
 def build_show_page(show):
-    """Build an individual show detail page following the audit template."""
+    """Build an individual show detail page — structured as a teacher decision page."""
     site = load_json("site.json")
     all_shows = load_json("shows.json")
     sections = []
 
-    # ── Spec card (scannable at-a-glance) ──
+    # ── At-a-glance spec card ──
     specs = []
     if show.get("age_range"):
         specs.append(("Ages", show["age_range"]))
@@ -491,14 +573,7 @@ def build_show_page(show):
     </div>
   </section>""")
 
-    # ── Perusal CTA (first — before any purchase ask) ──
-    sections.append(f"""
-  <section class="section cta-section">
-    <a href="mailto:{site['email']}?subject=Free+Perusal+%E2%80%94+{show['title'].replace(' ', '+')}" class="btn btn-primary btn-lg">Read the Script Free</a>
-    <p class="cta-hint">Email us and we'll send you the full script within 24 hours. No commitment, no credit card.</p>
-  </section>""")
-
-    # ── Synopsis ──
+    # ── Synopsis (before any CTA — teacher needs to know what the show IS) ──
     if show.get("synopsis"):
         sections.append(f"""
   <section class="section">
@@ -506,19 +581,47 @@ def build_show_page(show):
     <p>{show['synopsis']}</p>
   </section>""")
 
-    # ── Battle-tested provenance ──
-    if show.get("premiere_year"):
-        provenance = f"Workshopped and produced at The Actors Garden since {show['premiere_year']}. What you receive has been performed, revised, and proven on stage with real kids."
-    else:
-        provenance = "Workshopped and produced at The Actors Garden. What you receive has been performed, revised, and proven on stage with real kids."
+    # ── Why This Works for Young Performers (show-specific) ──
+    why_items = []
+    if show.get("cast_size") and show.get("cast_notes"):
+        why_items.append(("Flexible casting", show["cast_notes"]))
+    if show.get("source_material") and show["source_material"] != "Original":
+        why_items.append(("Curriculum-ready source material", f"Based on {show['source_material']} — connects naturally to classroom learning."))
+    if show.get("difficulty"):
+        diff_labels = {
+            "beginner-friendly": "Accessible for new programs and first-time performers.",
+            "intermediate": "Appropriate for programs with some musical theater experience.",
+            "intermediate-advanced": "Challenging material that rewards experienced performers."
+        }
+        why_items.append(("Right level of challenge", diff_labels.get(show["difficulty"], "")))
+    if show.get("has_intermission") is not None:
+        if show["has_intermission"]:
+            why_items.append(("Built-in intermission", "Gives young performers and audiences a natural break."))
 
-    if show.get("available_on_mtww"):
+    if why_items:
+        items_html = "\n".join(
+            f'      <div class="why-works-item"><strong>{label}</strong> {desc}</div>'
+            for label, desc in why_items
+        )
         sections.append(f"""
-  <section class="section provenance-section">
-    <div class="provenance-box">
-      <h3>Battle-Tested</h3>
-      <p>{provenance}</p>
+  <section class="section section-alt">
+    <h2>Why This Works for Young Performers</h2>
+    <div class="why-works-grid">
+{items_html}
     </div>
+  </section>""")
+
+    # ── Curriculum connections ──
+    connections = show.get("curriculum_connections", [])
+    if connections:
+        items = "\n".join(f"      <li>{c}</li>" for c in connections)
+        sections.append(f"""
+  <section class="section">
+    <h2>Curriculum Connections</h2>
+    <p>Pair this show with classroom learning:</p>
+    <ul class="curriculum-list">
+{items}
+    </ul>
   </section>""")
 
     # ── Credits + Details table ──
@@ -529,8 +632,6 @@ def build_show_page(show):
         rows.append(f"<tr><th>Music</th><td>{show['music_by']}</td></tr>")
     if show.get("source_material"):
         rows.append(f"<tr><th>Based On</th><td>{show['source_material']}</td></tr>")
-    if show.get("cast_notes"):
-        rows.append(f"<tr><th>Cast Notes</th><td>{show['cast_notes']}</td></tr>")
     if show.get("premiere_year"):
         venue = f" — {show['premiere_venue']}" if show.get("premiere_venue") else ""
         rows.append(f"<tr><th>Premiere</th><td>{show['premiere_year']}{venue}</td></tr>")
@@ -547,26 +648,13 @@ def build_show_page(show):
     </table>
   </section>""")
 
-    # ── Curriculum connections ──
-    connections = show.get("curriculum_connections", [])
-    if connections:
-        items = "\n".join(f"      <li>{c}</li>" for c in connections)
-        sections.append(f"""
-  <section class="section">
-    <h2>Curriculum Connections</h2>
-    <p>Pair this show with classroom learning:</p>
-    <ul class="curriculum-list">
-{items}
-    </ul>
-  </section>""")
-
     # ── What's in Your Production Kit ──
     if show.get("licensing_price"):
         lic_items = show.get("licensing_includes", site.get("licensing_includes_default", []))
         items_html = "\n".join(f'      <li><span class="kit-check" aria-hidden="true">&#10003;</span> {item}</li>' for item in lic_items)
         sections.append(f"""
-  <section class="section section-alt" id="production-kit">
-    <h2>What's in Your Production Kit</h2>
+  <section class="section" id="production-kit">
+    <h2>Your Production Kit</h2>
     <div class="kit-box">
       <ul class="kit-list">
 {items_html}
@@ -575,12 +663,11 @@ def build_show_page(show):
         <p class="licensing-price">${show['licensing_price']}</p>
         <p class="kit-terms">{show.get('licensing_notes', '')}</p>
         <a href="mailto:{site['email']}?subject=Order+Production+Kit+%E2%80%94+{show['title'].replace(' ', '+')}" class="btn btn-primary">Order the Production Kit</a>
-        <a href="mailto:{site['email']}?subject=Free+Perusal+%E2%80%94+{show['title'].replace(' ', '+')}" class="btn btn-secondary btn-sm">or read the script free first</a>
       </div>
     </div>
   </section>""")
 
-    # ── FAQ ──
+    # ── FAQ (collapsible) ──
     faq_items = show.get("faq", [])
     if faq_items:
         faq_html = "\n".join(
@@ -588,11 +675,20 @@ def build_show_page(show):
             for item in faq_items
         )
         sections.append(f"""
-  <section class="section">
+  <section class="section section-alt">
     <h2>Frequently Asked Questions</h2>
     <dl class="faq">
 {faq_html}
     </dl>
+  </section>""")
+
+    # ── Free perusal CTA (after they know what the show is) ──
+    if show.get("available_on_mtww"):
+        sections.append(f"""
+  <section class="final-cta">
+    <h2>Read the Script Free</h2>
+    <p>Tell us your name and organization. We'll send the full script within 24 hours — no commitment, no credit card.</p>
+    <a href="mailto:{site['email']}?subject=Free+Perusal+%E2%80%94+{show['title'].replace(' ', '+')}" class="btn btn-primary btn-lg">Request Free Perusal</a>
   </section>""")
 
     # ── Related shows ──
@@ -602,7 +698,7 @@ def build_show_page(show):
         if related:
             related_cards = "\n".join(show_card(s) for s in related)
             sections.append(f"""
-  <section class="section section-alt">
+  <section class="section">
     <h2>You Might Also Like</h2>
     <div class="show-grid">
 {related_cards}
@@ -621,7 +717,7 @@ def build_show_page(show):
     if faq_s:
         schemas.append(faq_s)
 
-    # Build description for meta
+    # Meta description
     meta_desc_parts = []
     if show.get("source_material") and show["source_material"] != "Original":
         meta_desc_parts.append(f"Based on {show['source_material']}.")
@@ -633,18 +729,32 @@ def build_show_page(show):
         meta_desc_parts.append(f"${show['licensing_price']} flat-rate licensing.")
     meta_desc = f"{show['title']} — musical for schools. " + " ".join(meta_desc_parts)
 
+    # Hero quick-spec summary
+    hero_meta_parts = []
+    if show.get("age_range"):
+        hero_meta_parts.append(f"<span>{show['age_range']}</span>")
+    if show.get("cast_size"):
+        hero_meta_parts.append(f"<span>{show['cast_size']}+ roles</span>")
+    if show.get("runtime_minutes"):
+        hero_meta_parts.append(f"<span>{show['runtime_minutes']} min</span>")
+    if show.get("licensing_price"):
+        hero_meta_parts.append(f"<span>${show['licensing_price']}</span>")
+    hero_meta = "\n      ".join(hero_meta_parts)
+
     html = head(
         f"{show['title']} — Musical for Schools",
         meta_desc,
         canonical_path=f"{show['id']}.html",
         schema=schemas[0]
-    ) + nav("Shows") + f"""
-<main>
+    ) + nav("Our Shows") + f"""
+<main id="main">
   <section class="show-hero">
     <h1>{show['title']}</h1>
     <p class="show-hero-tagline">{show.get('tagline', '')}</p>
     <p class="show-hero-credential">By two-time Richard Rodgers Award winner Dave Hudson</p>
-    <p class="show-hero-sub">{"Production Kit from $" + str(show['licensing_price']) + " &middot; " if show.get('licensing_price') else ""}Video rights included &middot; <a href="mailto:{site['email']}?subject=Free+Perusal+%E2%80%94+{show['title'].replace(' ', '+')}">Read the script free</a></p>
+    <div class="show-hero-meta">
+      {hero_meta}
+    </div>
     {status_note}
   </section>
 {body}
@@ -685,14 +795,14 @@ def build_about():
         "The story behind Musical Theatre Worldwide. Two-time Richard Rodgers Award winners, 30 years of youth theater in Oak Park, IL.",
         canonical_path="about.html",
         schema=org_schema()
-    ) + nav("About") + credential_bar() + f"""
-<main>
+    ) + nav("About") + f"""
+<main id="main">
   <section class="section">
     <h2>About Musical Theatre Worldwide</h2>
     <p>Musical Theatre Worldwide was born from The Actors Garden in Oak Park, Illinois — a children's theater program that has been developing young performers since 1996.</p>
     <p>Artistic Director GiGi Hudson identified a gap in the market: most musicals available for schools were "Junior" versions — shortened, simplified adaptations of adult shows. The roles, humor, and emotional complexity were designed for grown-ups, then cut down. Kids deserved better.</p>
     <p>Playwright Dave Hudson began writing original works specifically for young performers. Every show is workshopped, produced, and revised at The Actors Garden, where real kids test every scene, every song, and every joke. By the time a show is offered for licensing, it has been proven on stage — not just on paper.</p>
-    <p>The result: a catalog of 25+ original musicals that have been performed coast to coast across the United States and internationally in Scotland and Thailand.</p>
+    <p>The result: a catalog of 25+ original musicals that have been performed across the United States and internationally in Scotland and Thailand.</p>
   </section>
 
   <section class="section section-alt" id="awards">
@@ -726,8 +836,7 @@ def build_about():
   <section class="section" id="actors-garden">
     <h2>The Actors Garden Connection</h2>
     <p>The Actors Garden is a children's theater education program in Oak Park, Illinois, founded in 1996 by GiGi and Dave Hudson. For over 30 years, AG has been the creative laboratory where every MTWW musical is developed.</p>
-    <p>This means something specific: when you license a MTWW show, you're not getting a script that was workshopped in a reading room. You're getting a show that has been fully produced — cast, rehearsed, staged, performed, revised, and performed again — with real kids, in a real theater, in front of real audiences.</p>
-    <p>That workshopping process is our quality guarantee.</p>
+    <p>When you license a MTWW show, you're getting a show that has been fully produced — cast, rehearsed, staged, performed, revised, and performed again — with real kids, in a real theater, in front of real audiences. That workshopping process is our quality guarantee.</p>
   </section>
 </main>
 """ + footer()
@@ -738,20 +847,21 @@ def build_licensing():
     site = load_json("site.json")
     items = "\n".join(f'    <li><span class="kit-check" aria-hidden="true">&#10003;</span> {item}</li>' for item in site["licensing_includes_default"])
 
-    # Comparison table
+    # Comparison table — single canonical location
     comp = site.get("comparison", {}).get("vs_junior", [])
     comp_rows = ""
     for row in comp:
         mtww = '<span class="check" aria-label="Yes">&#10003;</span>' if row.get("mtww") else '<span class="x" aria-label="No">&#10007;</span>'
         junior = '<span class="check" aria-label="Yes">&#10003;</span>' if row.get("junior") else '<span class="x" aria-label="No">&#10007;</span>'
-        comp_rows += f"        <tr><td>{row['feature']}</td><td class='center'>{mtww}</td><td class='center'>{junior}</td></tr>\n"
+        note = f'<td class="note">{row.get("note", "")}</td>' if row.get("note") else '<td></td>'
+        comp_rows += f"        <tr><td>{row['feature']}</td><td class='center'>{mtww}</td><td class='center'>{junior}</td>{note}</tr>\n"
 
     html = head(
         "Production Kits — What You Get",
         f"MTWW Production Kits from ${site['licensing_default_price']}. Script, score, lead sheets, backing tracks, and video rights included. No rentals, no surprises.",
         canonical_path="licensing.html"
-    ) + nav("What You Get") + credential_bar() + f"""
-<main>
+    ) + nav("Production Kits") + f"""
+<main id="main">
   <section class="section">
     <h2>What's in a Production Kit</h2>
     <p>Every MTWW show comes as a complete Production Kit — everything you need to rehearse, perform, and share your production. No rental fees, no per-script charges, no surprise costs.</p>
@@ -765,23 +875,23 @@ def build_licensing():
   </section>
 
   <section class="section section-alt">
-    <h2>Getting Started</h2>
+    <h2>How It Works</h2>
     <ol class="steps-list">
-      <li><strong>Browse our shows</strong> — Find a musical that fits your program's age range, cast size, and timeline.</li>
+      <li><strong>Browse shows</strong> — Find a musical that fits your program's age range, cast size, and timeline.</li>
       <li><strong>Read the script free</strong> — Email us and we'll send you the full script within 24 hours. No commitment.</li>
       <li><strong>Order your Production Kit</strong> — Pay once and receive everything as printable PDFs and downloadable audio.</li>
-      <li><strong>Produce it</strong> — Copy scripts for your cast. Record your production. Upload to YouTube. No restrictions on how you use the materials within your license period.</li>
+      <li><strong>Produce it</strong> — Copy scripts for your cast. Record your production. Upload to YouTube. No restrictions within your license period.</li>
     </ol>
-    <a href="contact.html" class="btn btn-primary">Read a Script Free</a>
+    <a href="mailto:{site['email']}?subject=Free%20Perusal%20Request" class="btn btn-primary">Read a Script Free</a>
   </section>
 
   <section class="section">
     <h2>MTWW vs. Traditional Publishers</h2>
-    <p>Most school musical publishers (MTI, TRW, Concord) use a rental model with per-performance fees and mandatory material returns. Here's how MTWW compares:</p>
+    <p>Most school musical publishers use a rental model with per-performance fees and mandatory material returns. Here's how MTWW compares:</p>
     <div class="table-wrap">
       <table class="compare-table">
         <thead>
-          <tr><th>Feature</th><th class="center">MTWW</th><th class="center">Junior Versions</th></tr>
+          <tr><th>Feature</th><th class="center">MTWW</th><th class="center">Junior Versions</th><th>Why It Matters</th></tr>
         </thead>
         <tbody>
 {comp_rows}        </tbody>
@@ -824,24 +934,24 @@ def build_contact():
         "Get in touch with Musical Theatre Worldwide. Request a perusal copy, ask about licensing, or learn more about our shows.",
         canonical_path="contact.html"
     ) + nav("Contact") + f"""
-<main>
+<main id="main">
   <section class="section">
     <h2>Get in Touch</h2>
     <div class="contact-grid">
       <div class="contact-card">
         <h3>Read a Script Free</h3>
         <p>Tell us which show and your organization name. We'll send you the full script within 24 hours — no commitment, no credit card.</p>
-        <a href="mailto:{site['email']}?subject=Free%20Perusal%20Request" class="btn btn-primary">Read a Script Free</a>
+        <a href="mailto:{site['email']}?subject=Free%20Perusal%20Request" class="btn btn-primary">Request a Free Perusal</a>
       </div>
       <div class="contact-card">
         <h3>Order a Production Kit</h3>
-        <p>Ready to go? Questions about Production Kits, pricing, or anything else? We'd love to hear from you.</p>
+        <p>Ready to go? Questions about Production Kits, pricing, or anything else?</p>
         <p><a href="mailto:{site['email']}">{site['email']}</a></p>
         <p>{site['phone']}</p>
       </div>
       <div class="contact-card">
-        <h3>About The Actors Garden</h3>
-        <p>Looking for information about our youth theater program in Oak Park, Illinois?</p>
+        <h3>The Actors Garden</h3>
+        <p>Looking for our youth theater program in Oak Park, Illinois?</p>
         <p><a href="https://theactorsgarden.com">Visit The Actors Garden &rarr;</a></p>
       </div>
     </div>
@@ -852,31 +962,55 @@ def build_contact():
 
 
 def build_resources():
-    """Build the resources/blog listing page."""
+    """Build the resources/blog listing page with grouping by category."""
     resources = load_json("resources.json")
 
-    cards = []
+    # Group by category
+    groups = {}
+    group_labels = {
+        "guides": "Choosing a Show",
+        "directors-guides": "Directing & Staging",
+        "philosophy": "Building a Program"
+    }
+    group_order = ["guides", "directors-guides", "philosophy"]
+
     for r in resources:
-        cards.append(f"""    <article class="resource-card">
-      <span class="resource-category">{r.get('category', '').replace('-', ' ').title()}</span>
+        cat = r.get("category", "guides")
+        if cat not in groups:
+            groups[cat] = []
+        groups[cat].append(r)
+
+    sections_html = ""
+    for cat in group_order:
+        if cat not in groups:
+            continue
+        label = group_labels.get(cat, cat.replace("-", " ").title())
+        cards = []
+        for r in groups[cat]:
+            cards.append(f"""    <article class="resource-card">
       <h3><a href="{r['slug']}.html">{r['title']}</a></h3>
       <p>{r['description']}</p>
     </article>""")
-
-    cards_html = "\n".join(cards)
+        cards_html = "\n".join(cards)
+        sections_html += f"""
+    <div class="resource-group">
+      <h3>{label}</h3>
+      <div class="resource-grid">
+{cards_html}
+      </div>
+    </div>
+"""
 
     html = head(
-        "Resources for Educators",
+        "For Educators",
         "Guides, staging tips, and perspective from 30 years of producing youth musicals. Free resources for drama teachers and program directors.",
         canonical_path="resources.html"
-    ) + nav("Resources") + f"""
-<main>
+    ) + nav("For Educators") + f"""
+<main id="main">
   <section class="section">
-    <h2>Resources for Educators</h2>
-    <p>Practical guides and perspective from 30 years of producing musicals with young performers at The Actors Garden.</p>
-    <div class="resource-grid">
-{cards_html}
-    </div>
+    <h2>For Educators</h2>
+    <p>Practical guides from 30 years of producing musicals with young performers at The Actors Garden.</p>
+{sections_html}
   </section>
 </main>
 """ + footer()
@@ -895,10 +1029,8 @@ def build_resource_page(resource):
         elif para.startswith("**") and para.endswith("**"):
             content_parts.append(f"<p><strong>{para[2:-2]}</strong></p>")
         elif para.startswith("- "):
-            # Collect consecutive list items
             content_parts.append(f"<li>{para[2:]}</li>")
         else:
-            # Convert inline markdown bold
             import re
             processed = re.sub(r'\*\*(.+?)\*\*', r'<strong>\1</strong>', para)
             content_parts.append(f"<p>{processed}</p>")
@@ -941,11 +1073,11 @@ def build_resource_page(resource):
         resource["title"],
         resource["description"],
         canonical_path=f"{resource['slug']}.html"
-    ) + nav("Resources") + f"""
-<main>
+    ) + nav("For Educators") + f"""
+<main id="main">
   <article class="section article-content">
     <h1>{resource['title']}</h1>
-    <p class="article-meta">Musical Theatre Worldwide &middot; {resource.get('date', '')}</p>
+    <p class="article-meta">Musical Theatre Worldwide</p>
     {content_html}
   </article>
 {related_section}
