@@ -1,0 +1,24 @@
+{
+  "name": "Musical Theatre Worldwide",
+  "short_name": "MTWW",
+  "tagline": "Fresh Musicals for Schools and Youth Programs",
+  "description": "Original musicals designed to get the most out of young performers. Every show is workshopped, produced, and revised at The Actors Garden before being offered for licensing.",
+  "phone": "312-953-3703",
+  "email": "admin@musicaltheatreworldwide.com",
+  "url": "https://musicaltheatreworldwide.com",
+  "origin": "The Actors Garden, Oak Park, Illinois",
+  "licensing_default_price": 299,
+  "licensing_includes_default": [
+    "PDF script and piano/vocal score (printable)",
+    "Vocal lead sheets",
+    "Backing tracks for rehearsal and performance",
+    "No separate script or score rentals required"
+  ],
+  "nav": [
+    {"label": "Home", "href": "index.html"},
+    {"label": "Shows", "href": "shows.html"},
+    {"label": "About", "href": "about.html"},
+    {"label": "Licensing", "href": "licensing.html"},
+    {"label": "Contact", "href": "contact.html"}
+  ]
+}

@@ -1,0 +1,80 @@
+[
+  {
+    "id": "dave-hudson",
+    "name": "Dave Hudson",
+    "role": "Playwright & Lyricist",
+    "bio": "Dave Hudson is the head playwright for Musical Theatre Worldwide. Although he only officially started writing musicals in 2002, he already has over 25 musicals to his credit, averaging approximately 2 per year. He is a two-time winner of the Richard Rodgers Award for new musicals (with Paul Libman) and has had multiple selections for the Stages Festival of New Musicals and the Madison Rep Festival of New Plays. His work has been produced primarily in the Midwest, but his shows have been seen from coast to coast, and as far away as Scotland and Thailand. He is equally at home in the youth market and professional arena.",
+    "is_founder": true,
+    "awards": [
+      "Richard Rodgers Award (2005, Dust and Dreams)",
+      "Richard Rodgers Award (2007, Main-Travelled Roads)",
+      "Multiple Stages Festival of New Musicals selections",
+      "Multiple Madison Rep Festival of New Plays selections"
+    ],
+    "collaborators": ["paul-libman", "leah-okimoto", "mark-sutton-smith", "denver-casado", "denise-wright"],
+    "photo": null
+  },
+  {
+    "id": "gigi-hudson",
+    "name": "GiGi Hudson",
+    "role": "Artistic Director",
+    "bio": "GiGi Hudson is the co-founder of Musical Theatre Worldwide and the Artistic Director of The Actors Garden in Oak Park, Illinois. She identified a gap in the market for musicals originally written for young performers — not shortened versions of adult shows — and partnered with Dave Hudson to create works specifically designed to get the most out of young performers.",
+    "is_founder": true,
+    "awards": [],
+    "collaborators": [],
+    "photo": null
+  },
+  {
+    "id": "paul-libman",
+    "name": "Paul Libman",
+    "role": "Composer",
+    "bio": null,
+    "is_founder": false,
+    "awards": [
+      "Richard Rodgers Award (2005, with Dave Hudson)",
+      "Richard Rodgers Award (2007, with Dave Hudson)"
+    ],
+    "collaborators": ["dave-hudson"],
+    "photo": null
+  },
+  {
+    "id": "leah-okimoto",
+    "name": "Leah Okimoto",
+    "role": "Composer",
+    "bio": null,
+    "is_founder": false,
+    "awards": [],
+    "collaborators": ["dave-hudson"],
+    "photo": null
+  },
+  {
+    "id": "mark-sutton-smith",
+    "name": "Mark Sutton-Smith",
+    "role": "Composer",
+    "bio": null,
+    "is_founder": false,
+    "awards": [],
+    "collaborators": ["dave-hudson"],
+    "photo": null
+  },
+  {
+    "id": "denver-casado",
+    "name": "Denver Casado",
+    "role": "Composer",
+    "bio": null,
+    "is_founder": false,
+    "awards": [],
+    "collaborators": ["dave-hudson"],
+    "photo": null
+  },
+  {
+    "id": "denise-wright",
+    "name": "Denise Wright",
+    "role": "Composer",
+    "bio": null,
+    "is_founder": false,
+    "awards": [],
+    "collaborators": ["dave-hudson"],
+    "photo": null
+  }
+]
