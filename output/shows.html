@@ -3,62 +3,91 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Shows — Musical Theatre Worldwide</title>
-<meta name="description" content="Browse our catalog of original musicals for schools and youth programs.">
+<title>Our Shows — Musical Theatre Worldwide</title>
+<meta name="description" content="Browse original musicals for schools and youth programs. Filter by age, cast size, and runtime. From $299.">
+<link rel="canonical" href="https://musicaltheatreworldwide.com/shows.html">
+<meta property="og:title" content="Our Shows — Musical Theatre Worldwide">
+<meta property="og:description" content="Browse original musicals for schools and youth programs. Filter by age, cast size, and runtime. From $299.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://musicaltheatreworldwide.com/shows.html">
+<meta property="og:site_name" content="Musical Theatre Worldwide">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-<nav class="site-nav">
+<nav class="site-nav" aria-label="Main navigation">
   <div class="nav-inner">
     <a href="index.html" class="nav-logo">MTWW</a>
-    <div class="nav-links">
+    <button class="nav-toggle" aria-expanded="false" aria-controls="nav-menu" aria-label="Toggle navigation">
+      <span class="nav-toggle-bar"></span>
+      <span class="nav-toggle-bar"></span>
+      <span class="nav-toggle-bar"></span>
+    </button>
+    <div class="nav-links" id="nav-menu">
     <a href="index.html">Home</a>
-    <a href="shows.html">Shows</a>
-    <a href="about.html">About</a>
+    <a href="shows.html" class="nav-active">Shows</a>
     <a href="licensing.html">Licensing</a>
+    <a href="resources.html">Resources</a>
+    <a href="about.html">About</a>
     <a href="contact.html">Contact</a>
     </div>
   </div>
 </nav>
+<div class="credential-bar">
+  <div class="credential-inner">
+    <span class="credential-item"><strong>Two-Time Richard Rodgers Award Winners</strong></span>
+    <span class="credential-sep" aria-hidden="true">&middot;</span>
+    <span class="credential-item">25+ Original Musicals</span>
+    <span class="credential-sep" aria-hidden="true">&middot;</span>
+    <span class="credential-item">30 Years of Youth Theater</span>
+  </div>
+</div>
 
 <main>
   <section class="section" id="mtww-shows">
     <h2>MTWW Shows</h2>
-    <p>Available for licensing directly from Musical Theatre Worldwide.</p>
+    <p>Available for licensing directly from Musical Theatre Worldwide. Every show includes the complete script, score, lead sheets, and backing tracks.</p>
+    <div class="filter-bar" role="toolbar" aria-label="Filter shows">
+      <button class="filter-btn filter-active" data-filter="all">All Shows</button>
+      <button class="filter-btn" data-filter="elementary">Elementary</button>
+      <button class="filter-btn" data-filter="middle">Middle School+</button>
+    </div>
     <div class="show-grid">
-<article class="show-card">
+<article class="show-card" data-age="8" data-cast="25" data-runtime="70" data-status="active">
   <div class="show-card-body">
-    <h3><a href="just-so.html">Just So</a> </h3>
-    <p class="show-tagline">Some of Rudyard Kipling's best stories brought to the stage!</p>
-    <p class="show-credits">Music by Leah Okimoto<br>Book & Lyrics by Dave Hudson</p>
-    <p class="show-meta">70 min &middot; 25+ cast &middot; 3rd grade and up &middot; 9 songs</p>
+    <h3><a href="just-so.html">Just So</a>  <span class="badge badge-diff">beginner-friendly</span></h3>
+    <p class="show-tagline">Rudyard Kipling's beloved stories brought to life on stage</p>
+    <p class="show-meta"><span>70 min + intermission</span><span class="card-sep" aria-hidden="true">&middot;</span><span>25+ cast</span><span class="card-sep" aria-hidden="true">&middot;</span><span>3rd grade and up</span><span class="card-sep" aria-hidden="true">&middot;</span><span>$299</span></p>
+    <p class="show-credits">Music by Leah Okimoto &middot; Lyrics by Dave Hudson</p>
   </div>
 </article>
 
-<article class="show-card">
+<article class="show-card" data-age="9" data-cast="25" data-runtime="80" data-status="active">
   <div class="show-card-body">
-    <h3><a href="becky-thatcher.html">Becky Thatcher</a> </h3>
-    <p class="show-tagline">A new look at Mark Twain's Hannibal, MO — this time focusing on Becky instead of Tom!</p>
-    <p class="show-credits">Music by Mark Sutton-Smith<br>Book & Lyrics by Dave Hudson</p>
-    <p class="show-meta">80 min &middot; 25+ cast &middot; 4th grade and up &middot; 16 songs</p>
+    <h3><a href="becky-thatcher.html">Becky Thatcher</a>  <span class="badge badge-diff">intermediate</span></h3>
+    <p class="show-tagline">Mark Twain's Hannibal, MO reimagined from Becky's perspective</p>
+    <p class="show-meta"><span>80 min + intermission</span><span class="card-sep" aria-hidden="true">&middot;</span><span>25+ cast</span><span class="card-sep" aria-hidden="true">&middot;</span><span>4th grade and up</span><span class="card-sep" aria-hidden="true">&middot;</span><span>$299</span></p>
+    <p class="show-credits">Music by Mark Sutton-Smith &middot; Lyrics by Dave Hudson</p>
   </div>
 </article>
 
-<article class="show-card">
+<article class="show-card" data-age="11" data-cast="25" data-runtime="90" data-status="active">
   <div class="show-card-body">
-    <h3><a href="off-to-olympus.html">Off to Olympus</a> <span class="badge badge-draft">Coming Soon</span></h3>
-    <p class="show-tagline">A rollicking re-imagining of some of the legends in Greek Mythology.</p>
-    <p class="show-credits">Music by Mark Sutton-Smith<br>Book & Lyrics by Dave Hudson</p>
+    <h3><a href="off-to-olympus.html">Off to Olympus</a>  <span class="badge badge-diff">intermediate-advanced</span></h3>
+    <p class="show-tagline">A rollicking reimagining of the legends of Greek mythology</p>
+    <p class="show-meta"><span>90 min + intermission</span><span class="card-sep" aria-hidden="true">&middot;</span><span>25+ cast</span><span class="card-sep" aria-hidden="true">&middot;</span><span>7th grade and up (ages 11+)</span><span class="card-sep" aria-hidden="true">&middot;</span><span>$399</span></p>
+    <p class="show-credits">Music by Mark Sutton-Smith &middot; Lyrics by Dave Hudson</p>
+  </div>
+</article>
+
+<article class="show-card" data-age="None" data-cast="None" data-runtime="None" data-status="needs_data">
+  <div class="show-card-body">
+    <h3><a href="pots-and-pan.html">Pots and Pan</a> <span class="badge badge-draft">Coming Soon</span> </h3>
+    <p class="show-tagline">The next chapter in the story of the boy who refuses to grow up</p>
     <p class="show-meta"></p>
-  </div>
-</article>
-
-<article class="show-card">
-  <div class="show-card-body">
-    <h3><a href="pots-and-pan.html">Pots and Pan</a> <span class="badge badge-draft">Coming Soon</span></h3>
-    <p class="show-tagline">The next chapter in the story of the boy who refuses to grow up — Peter Pan!</p>
-    <p class="show-credits">Book & Lyrics by Dave Hudson</p>
-    <p class="show-meta"></p>
+    <p class="show-credits">Lyrics by Dave Hudson</p>
   </div>
 </article>
 
@@ -67,32 +96,32 @@
 
   <section class="section section-alt" id="other-works">
     <h2>Other Works by Dave Hudson</h2>
-    <p>These shows are licensed through other publishers but are part of Dave Hudson's catalog.</p>
+    <p>These shows are licensed through other publishers but are part of Dave Hudson's catalog of 25+ musicals.</p>
     <div class="show-grid">
-<article class="show-card">
+<article class="show-card" data-age="None" data-cast="None" data-runtime="60" data-status="external_license">
   <div class="show-card-body">
-    <h3><a href="tut-tut.html">Tut, Tut!</a> </h3>
-    <p class="show-tagline">King Tut meets the Prince and the Pauper.</p>
-    <p class="show-credits">Music by Denver Casado<br>Book & Lyrics by Dave Hudson</p>
-    <p class="show-meta">60 min &middot; 13 songs</p>
+    <h3><a href="https://www.bbbpress.com" target="_blank" rel="noopener">Tut, Tut!</a> <span class="badge badge-external">Beat by Beat Press</span> </h3>
+    <p class="show-tagline">King Tut meets the Prince and the Pauper in this musical comedy</p>
+    <p class="show-meta"><span>60 min</span></p>
+    <p class="show-credits">Music by Denver Casado &middot; Lyrics by Dave Hudson</p>
   </div>
 </article>
 
-<article class="show-card">
+<article class="show-card" data-age="None" data-cast="None" data-runtime="30" data-status="external_license">
   <div class="show-card-body">
-    <h3><a href="bounce.html">Bounce!</a> </h3>
-    <p class="show-tagline">A 30-minute musical about Reggie, a 10-year-old with endless energy.</p>
-    <p class="show-credits">Music by Denver Casado<br>Book & Lyrics by Dave Hudson</p>
-    <p class="show-meta">30 min</p>
+    <h3><a href="https://www.bbbpress.com" target="_blank" rel="noopener">Bounce!</a> <span class="badge badge-external">Beat by Beat Press</span> </h3>
+    <p class="show-tagline">A 30-minute musical about a kid with endless energy</p>
+    <p class="show-meta"><span>30 min</span></p>
+    <p class="show-credits">Music by Denver Casado &middot; Lyrics by Dave Hudson</p>
   </div>
 </article>
 
-<article class="show-card">
+<article class="show-card" data-age="None" data-cast="None" data-runtime="None" data-status="external_license">
   <div class="show-card-body">
-    <h3><a href="the-show-must-go-online.html">The Show Must Go Online</a> </h3>
-    <p class="show-tagline">The world's first virtual children's musical — 1,000+ productions in 40 countries.</p>
-    <p class="show-credits">Music by Denver Casado<br>Book & Lyrics by Jessica Penzias</p>
+    <h3><a href="https://www.bbbpress.com" target="_blank" rel="noopener">The Show Must Go Online</a> <span class="badge badge-external">Beat by Beat Press</span> </h3>
+    <p class="show-tagline">The world's first virtual children's musical — performed by over 1,000 productions worldwide</p>
     <p class="show-meta"></p>
+    <p class="show-credits">Music by Denver Casado &middot; Book by Jessica Penzias &middot; Lyrics by Dave Hudson</p>
   </div>
 </article>
 
@@ -100,11 +129,42 @@
   </section>
 
 </main>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  var filters = document.querySelectorAll('.filter-btn');
+  var cards = document.querySelectorAll('.show-card[data-status="active"], .show-card[data-status="needs_data"]');
+
+  filters.forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      filters.forEach(function(b) { b.classList.remove('filter-active'); });
+      btn.classList.add('filter-active');
+
+      var filter = btn.getAttribute('data-filter');
+      cards.forEach(function(card) {
+        if (filter === 'all') {
+          card.style.display = '';
+        } else if (filter === 'elementary') {
+          var age = parseInt(card.getAttribute('data-age'));
+          card.style.display = (age && age <= 9) ? '' : 'none';
+        } else if (filter === 'middle') {
+          var age = parseInt(card.getAttribute('data-age'));
+          card.style.display = (age && age >= 9 && age <= 13) ? '' : 'none';
+        } else if (filter === 'short') {
+          var rt = parseInt(card.getAttribute('data-runtime'));
+          card.style.display = (rt && rt <= 60) ? '' : 'none';
+        }
+      });
+    });
+  });
+});
+</script>
 <footer class="site-footer">
   <div class="footer-inner">
     <div class="footer-col">
       <p class="footer-name">Musical Theatre Worldwide</p>
-      <p>Born from <a href="https://actorsgarden.com">The Actors Garden</a>, Oak Park, Illinois</p>
+      <p>Born from <a href="https://theactorsgarden.com">The Actors Garden</a>, Oak Park, Illinois</p>
+      <p class="footer-credential">Two-time Richard Rodgers Award winners</p>
     </div>
     <div class="footer-col">
       <p><a href="mailto:admin@musicaltheatreworldwide.com">admin@musicaltheatreworldwide.com</a></p>
@@ -113,5 +173,19 @@
     <p class="footer-copy">&copy; 2026 Musical Theatre Worldwide</p>
   </div>
 </footer>
+<script>
+// Mobile nav toggle
+document.addEventListener('DOMContentLoaded', function() {
+  var toggle = document.querySelector('.nav-toggle');
+  var menu = document.getElementById('nav-menu');
+  if (toggle && menu) {
+    toggle.addEventListener('click', function() {
+      var expanded = toggle.getAttribute('aria-expanded') === 'true';
+      toggle.setAttribute('aria-expanded', !expanded);
+      menu.classList.toggle('nav-open');
+    });
+  }
+});
+</script>
 </body>
 </html>

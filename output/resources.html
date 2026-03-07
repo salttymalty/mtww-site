@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Resources for Educators — Musical Theatre Worldwide</title>
+<meta name="description" content="Guides, staging tips, and perspective from 30 years of producing youth musicals. Free resources for drama teachers and program directors.">
+<link rel="canonical" href="https://musicaltheatreworldwide.com/resources.html">
+<meta property="og:title" content="Resources for Educators — Musical Theatre Worldwide">
+<meta property="og:description" content="Guides, staging tips, and perspective from 30 years of producing youth musicals. Free resources for drama teachers and program directors.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://musicaltheatreworldwide.com/resources.html">
+<meta property="og:site_name" content="Musical Theatre Worldwide">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<nav class="site-nav" aria-label="Main navigation">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo">MTWW</a>
+    <button class="nav-toggle" aria-expanded="false" aria-controls="nav-menu" aria-label="Toggle navigation">
+      <span class="nav-toggle-bar"></span>
+      <span class="nav-toggle-bar"></span>
+      <span class="nav-toggle-bar"></span>
+    </button>
+    <div class="nav-links" id="nav-menu">
+    <a href="index.html">Home</a>
+    <a href="shows.html">Shows</a>
+    <a href="licensing.html">Licensing</a>
+    <a href="resources.html" class="nav-active">Resources</a>
+    <a href="about.html">About</a>
+    <a href="contact.html">Contact</a>
+    </div>
+  </div>
+</nav>
+
+<main>
+  <section class="section">
+    <h2>Resources for Educators</h2>
+    <p>Practical guides and perspective from 30 years of producing musicals with young performers at The Actors Garden.</p>
+    <div class="resource-grid">
+    <article class="resource-card">
+      <span class="resource-category">Guides</span>
+      <h3><a href="how-to-choose-a-school-musical.html">How to Choose a Musical for Your School or Youth Program</a></h3>
+      <p>A practical guide for drama teachers and program coordinators selecting the right musical for their students.</p>
+    </article>
+    <article class="resource-card">
+      <span class="resource-category">Philosophy</span>
+      <h3><a href="why-original-musicals-work-better.html">Why Original Musicals Work Better for Young Performers</a></h3>
+      <p>The case for choosing musicals written specifically for kids, not shortened versions of adult shows.</p>
+    </article>
+    <article class="resource-card">
+      <span class="resource-category">Directors Guides</span>
+      <h3><a href="staging-just-so-directors-guide.html">Staging Just So: A Director's Guide</a></h3>
+      <p>Practical staging advice for directors producing Just So, from cast considerations to music preparation.</p>
+    </article>
+    <article class="resource-card">
+      <span class="resource-category">Guides</span>
+      <h3><a href="musical-theatre-for-elementary-students.html">Musical Theatre for Elementary Students: What Works</a></h3>
+      <p>What makes a great musical theater experience for young children, and how to set one up at your school.</p>
+    </article>
+    <article class="resource-card">
+      <span class="resource-category">Philosophy</span>
+      <h3><a href="what-makes-a-good-youth-musical.html">What Makes a Good Musical for Young Performers?</a></h3>
+      <p>The qualities that separate great youth musicals from mediocre ones, from a 30-year perspective.</p>
+    </article>
+    </div>
+  </section>
+</main>
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div class="footer-col">
+      <p class="footer-name">Musical Theatre Worldwide</p>
+      <p>Born from <a href="https://theactorsgarden.com">The Actors Garden</a>, Oak Park, Illinois</p>
+      <p class="footer-credential">Two-time Richard Rodgers Award winners</p>
+    </div>
+    <div class="footer-col">
+      <p><a href="mailto:admin@musicaltheatreworldwide.com">admin@musicaltheatreworldwide.com</a></p>
+      <p>312-953-3703</p>
+    </div>
+    <p class="footer-copy">&copy; 2026 Musical Theatre Worldwide</p>
+  </div>
+</footer>
+<script>
+// Mobile nav toggle
+document.addEventListener('DOMContentLoaded', function() {
+  var toggle = document.querySelector('.nav-toggle');
+  var menu = document.getElementById('nav-menu');
+  if (toggle && menu) {
+    toggle.addEventListener('click', function() {
+      var expanded = toggle.getAttribute('aria-expanded') === 'true';
+      toggle.setAttribute('aria-expanded', !expanded);
+      menu.classList.toggle('nav-open');
+    });
+  }
+});
+</script>
+</body>
+</html>

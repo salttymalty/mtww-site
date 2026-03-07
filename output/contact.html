@@ -4,19 +4,34 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Contact — Musical Theatre Worldwide</title>
-<meta name="description" content="Get in touch with Musical Theatre Worldwide.">
+<meta name="description" content="Get in touch with Musical Theatre Worldwide. Request a perusal copy, ask about licensing, or learn more about our shows.">
+<link rel="canonical" href="https://musicaltheatreworldwide.com/contact.html">
+<meta property="og:title" content="Contact — Musical Theatre Worldwide">
+<meta property="og:description" content="Get in touch with Musical Theatre Worldwide. Request a perusal copy, ask about licensing, or learn more about our shows.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://musicaltheatreworldwide.com/contact.html">
+<meta property="og:site_name" content="Musical Theatre Worldwide">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-<nav class="site-nav">
+<nav class="site-nav" aria-label="Main navigation">
   <div class="nav-inner">
     <a href="index.html" class="nav-logo">MTWW</a>
-    <div class="nav-links">
+    <button class="nav-toggle" aria-expanded="false" aria-controls="nav-menu" aria-label="Toggle navigation">
+      <span class="nav-toggle-bar"></span>
+      <span class="nav-toggle-bar"></span>
+      <span class="nav-toggle-bar"></span>
+    </button>
+    <div class="nav-links" id="nav-menu">
     <a href="index.html">Home</a>
     <a href="shows.html">Shows</a>
-    <a href="about.html">About</a>
     <a href="licensing.html">Licensing</a>
-    <a href="contact.html">Contact</a>
+    <a href="resources.html">Resources</a>
+    <a href="about.html">About</a>
+    <a href="contact.html" class="nav-active">Contact</a>
     </div>
   </div>
 </nav>
@@ -26,14 +41,20 @@
     <h2>Get in Touch</h2>
     <div class="contact-grid">
       <div class="contact-card">
+        <h3>Request a Perusal Copy</h3>
+        <p>Want to read a script before licensing? Tell us which show and your organization name, and we'll send you a free perusal copy.</p>
+        <a href="mailto:admin@musicaltheatreworldwide.com?subject=Perusal%20Request" class="btn btn-primary">Request a Perusal</a>
+      </div>
+      <div class="contact-card">
         <h3>General Inquiries</h3>
+        <p>Questions about licensing, our shows, or anything else? We'd love to hear from you.</p>
         <p><a href="mailto:admin@musicaltheatreworldwide.com">admin@musicaltheatreworldwide.com</a></p>
         <p>312-953-3703</p>
       </div>
       <div class="contact-card">
-        <h3>Request a Perusal Copy</h3>
-        <p>Want to read a script before licensing? Email us with the show title and your organization name, and we'll send you a perusal copy.</p>
-        <a href="mailto:admin@musicaltheatreworldwide.com?subject=Perusal%20Request" class="btn btn-primary">Request a Perusal</a>
+        <h3>About The Actors Garden</h3>
+        <p>Looking for information about our youth theater program in Oak Park, Illinois?</p>
+        <p><a href="https://theactorsgarden.com">Visit The Actors Garden &rarr;</a></p>
       </div>
     </div>
   </section>
@@ -42,7 +63,8 @@
   <div class="footer-inner">
     <div class="footer-col">
       <p class="footer-name">Musical Theatre Worldwide</p>
-      <p>Born from <a href="https://actorsgarden.com">The Actors Garden</a>, Oak Park, Illinois</p>
+      <p>Born from <a href="https://theactorsgarden.com">The Actors Garden</a>, Oak Park, Illinois</p>
+      <p class="footer-credential">Two-time Richard Rodgers Award winners</p>
     </div>
     <div class="footer-col">
       <p><a href="mailto:admin@musicaltheatreworldwide.com">admin@musicaltheatreworldwide.com</a></p>
@@ -51,5 +73,19 @@
     <p class="footer-copy">&copy; 2026 Musical Theatre Worldwide</p>
   </div>
 </footer>
+<script>
+// Mobile nav toggle
+document.addEventListener('DOMContentLoaded', function() {
+  var toggle = document.querySelector('.nav-toggle');
+  var menu = document.getElementById('nav-menu');
+  if (toggle && menu) {
+    toggle.addEventListener('click', function() {
+      var expanded = toggle.getAttribute('aria-expanded') === 'true';
+      toggle.setAttribute('aria-expanded', !expanded);
+      menu.classList.toggle('nav-open');
+    });
+  }
+});
+</script>
 </body>
 </html>

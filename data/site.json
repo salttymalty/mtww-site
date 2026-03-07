@@ -1,24 +1,43 @@
 {
   "name": "Musical Theatre Worldwide",
   "short_name": "MTWW",
-  "tagline": "Fresh Musicals for Schools and Youth Programs",
-  "description": "Original musicals designed to get the most out of young performers. Every show is workshopped, produced, and revised at The Actors Garden before being offered for licensing.",
+  "tagline": "Award-Winning Original Musicals for Young Performers",
+  "description": "Original musicals written specifically for young performers, workshopped and perfected at The Actors Garden over 30 years. Two-time Richard Rodgers Award winners.",
   "phone": "312-953-3703",
   "email": "admin@musicaltheatreworldwide.com",
   "url": "https://musicaltheatreworldwide.com",
   "origin": "The Actors Garden, Oak Park, Illinois",
+  "founded_year": 1996,
   "licensing_default_price": 299,
   "licensing_includes_default": [
     "PDF script and piano/vocal score (printable)",
     "Vocal lead sheets",
     "Backing tracks for rehearsal and performance",
-    "No separate script or score rentals required"
+    "No separate script or score rentals required",
+    "Unlimited copying for your cast and crew"
+  ],
+  "credentials": [
+    "Two-time Richard Rodgers Award winners (2005, 2007)",
+    "25+ original musicals",
+    "Produced coast to coast and internationally (Scotland, Thailand)",
+    "30+ years of youth theater production at The Actors Garden"
   ],
   "nav": [
     {"label": "Home", "href": "index.html"},
     {"label": "Shows", "href": "shows.html"},
-    {"label": "About", "href": "about.html"},
     {"label": "Licensing", "href": "licensing.html"},
+    {"label": "Resources", "href": "resources.html"},
+    {"label": "About", "href": "about.html"},
     {"label": "Contact", "href": "contact.html"}
-  ]
+  ],
+  "comparison": {
+    "vs_junior": [
+      {"feature": "Written for young performers", "mtww": true, "junior": false, "note": "Not shortened adult shows"},
+      {"feature": "Flat-rate licensing", "mtww": true, "junior": false, "note": "$299-399, no per-script rental"},
+      {"feature": "Unlimited performances", "mtww": true, "junior": false, "note": "Within license period"},
+      {"feature": "Printable materials", "mtww": true, "junior": false, "note": "No returns required"},
+      {"feature": "Workshopped with real kids", "mtww": true, "junior": false, "note": "Proven at The Actors Garden"},
+      {"feature": "Video/YouTube rights", "mtww": true, "junior": false, "note": "Record and share your production"}
+    ]
+  }
 }

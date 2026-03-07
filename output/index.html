@@ -4,99 +4,214 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Home — Musical Theatre Worldwide</title>
-<meta name="description" content="Original musicals designed to get the most out of young performers. Every show is workshopped, produced, and revised at The Actors Garden before being offered for licensing.">
+<meta name="description" content="Award-winning original musicals for schools and youth programs. Written for young performers, workshopped at The Actors Garden. From $299.">
+<link rel="canonical" href="https://musicaltheatreworldwide.com">
+<meta property="og:title" content="Home — Musical Theatre Worldwide">
+<meta property="og:description" content="Award-winning original musicals for schools and youth programs. Written for young performers, workshopped at The Actors Garden. From $299.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://musicaltheatreworldwide.com">
+<meta property="og:site_name" content="Musical Theatre Worldwide">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="styles.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "Musical Theatre Worldwide",
+  "url": "https://musicaltheatreworldwide.com",
+  "description": "Original musicals written specifically for young performers, workshopped and perfected at The Actors Garden over 30 years. Two-time Richard Rodgers Award winners.",
+  "telephone": "312-953-3703",
+  "email": "admin@musicaltheatreworldwide.com",
+  "foundingDate": "1996",
+  "foundingLocation": {
+    "@type": "Place",
+    "name": "The Actors Garden, Oak Park, Illinois"
+  }
+}
+</script>
 </head>
 <body>
-<nav class="site-nav">
+<nav class="site-nav" aria-label="Main navigation">
   <div class="nav-inner">
     <a href="index.html" class="nav-logo">MTWW</a>
-    <div class="nav-links">
-    <a href="index.html">Home</a>
+    <button class="nav-toggle" aria-expanded="false" aria-controls="nav-menu" aria-label="Toggle navigation">
+      <span class="nav-toggle-bar"></span>
+      <span class="nav-toggle-bar"></span>
+      <span class="nav-toggle-bar"></span>
+    </button>
+    <div class="nav-links" id="nav-menu">
+    <a href="index.html" class="nav-active">Home</a>
     <a href="shows.html">Shows</a>
-    <a href="about.html">About</a>
     <a href="licensing.html">Licensing</a>
+    <a href="resources.html">Resources</a>
+    <a href="about.html">About</a>
     <a href="contact.html">Contact</a>
     </div>
   </div>
 </nav>
+<div class="credential-bar">
+  <div class="credential-inner">
+    <span class="credential-item"><strong>Two-Time Richard Rodgers Award Winners</strong></span>
+    <span class="credential-sep" aria-hidden="true">&middot;</span>
+    <span class="credential-item">25+ Original Musicals</span>
+    <span class="credential-sep" aria-hidden="true">&middot;</span>
+    <span class="credential-item">30 Years of Youth Theater</span>
+  </div>
+</div>
 
 <main>
   <section class="hero">
     <div class="hero-inner">
-      <h1>Musical Theatre Worldwide</h1>
-      <p class="hero-tagline">Fresh Musicals for Schools and Youth Programs</p>
-      <p class="hero-sub">Original musicals designed to get the most out of young performers. Every show is workshopped, produced, and revised at The Actors Garden before being offered for licensing.</p>
-      <a href="shows.html" class="btn btn-primary">Browse Our Shows</a>
-      <a href="licensing.html" class="btn btn-secondary">How Licensing Works</a>
+      <h1>Original Musicals for Young Performers</h1>
+      <p class="hero-tagline">Award-Winning Original Musicals for Young Performers</p>
+      <p class="hero-sub">Every show is workshopped, produced, and perfected at The Actors Garden before being offered for licensing. What you get has been proven on stage with real kids.</p>
+      <div class="hero-ctas">
+        <a href="shows.html" class="btn btn-primary">Browse Our Shows</a>
+        <a href="licensing.html" class="btn btn-secondary">How Licensing Works</a>
+      </div>
     </div>
   </section>
 
   <section class="section" id="featured">
     <h2>Our Shows</h2>
+    <p>Available for licensing from $299. Every show includes the complete script, piano/vocal score, lead sheets, and backing tracks.</p>
     <div class="show-grid">
-<article class="show-card">
+<article class="show-card" data-age="8" data-cast="25" data-runtime="70" data-status="active">
   <div class="show-card-body">
-    <h3><a href="just-so.html">Just So</a> </h3>
-    <p class="show-tagline">Some of Rudyard Kipling's best stories brought to the stage!</p>
-    <p class="show-credits">Music by Leah Okimoto<br>Book & Lyrics by Dave Hudson</p>
-    <p class="show-meta">70 min &middot; 25+ cast &middot; 3rd grade and up &middot; 9 songs</p>
+    <h3><a href="just-so.html">Just So</a>  <span class="badge badge-diff">beginner-friendly</span></h3>
+    <p class="show-tagline">Rudyard Kipling's beloved stories brought to life on stage</p>
+    <p class="show-meta"><span>70 min + intermission</span><span class="card-sep" aria-hidden="true">&middot;</span><span>25+ cast</span><span class="card-sep" aria-hidden="true">&middot;</span><span>3rd grade and up</span><span class="card-sep" aria-hidden="true">&middot;</span><span>$299</span></p>
+    <p class="show-credits">Music by Leah Okimoto &middot; Lyrics by Dave Hudson</p>
   </div>
 </article>
 
-<article class="show-card">
+<article class="show-card" data-age="9" data-cast="25" data-runtime="80" data-status="active">
   <div class="show-card-body">
-    <h3><a href="becky-thatcher.html">Becky Thatcher</a> </h3>
-    <p class="show-tagline">A new look at Mark Twain's Hannibal, MO — this time focusing on Becky instead of Tom!</p>
-    <p class="show-credits">Music by Mark Sutton-Smith<br>Book & Lyrics by Dave Hudson</p>
-    <p class="show-meta">80 min &middot; 25+ cast &middot; 4th grade and up &middot; 16 songs</p>
+    <h3><a href="becky-thatcher.html">Becky Thatcher</a>  <span class="badge badge-diff">intermediate</span></h3>
+    <p class="show-tagline">Mark Twain's Hannibal, MO reimagined from Becky's perspective</p>
+    <p class="show-meta"><span>80 min + intermission</span><span class="card-sep" aria-hidden="true">&middot;</span><span>25+ cast</span><span class="card-sep" aria-hidden="true">&middot;</span><span>4th grade and up</span><span class="card-sep" aria-hidden="true">&middot;</span><span>$299</span></p>
+    <p class="show-credits">Music by Mark Sutton-Smith &middot; Lyrics by Dave Hudson</p>
   </div>
 </article>
 
-<article class="show-card">
+<article class="show-card" data-age="11" data-cast="25" data-runtime="90" data-status="active">
   <div class="show-card-body">
-    <h3><a href="off-to-olympus.html">Off to Olympus</a> <span class="badge badge-draft">Coming Soon</span></h3>
-    <p class="show-tagline">A rollicking re-imagining of some of the legends in Greek Mythology.</p>
-    <p class="show-credits">Music by Mark Sutton-Smith<br>Book & Lyrics by Dave Hudson</p>
+    <h3><a href="off-to-olympus.html">Off to Olympus</a>  <span class="badge badge-diff">intermediate-advanced</span></h3>
+    <p class="show-tagline">A rollicking reimagining of the legends of Greek mythology</p>
+    <p class="show-meta"><span>90 min + intermission</span><span class="card-sep" aria-hidden="true">&middot;</span><span>25+ cast</span><span class="card-sep" aria-hidden="true">&middot;</span><span>7th grade and up (ages 11+)</span><span class="card-sep" aria-hidden="true">&middot;</span><span>$399</span></p>
+    <p class="show-credits">Music by Mark Sutton-Smith &middot; Lyrics by Dave Hudson</p>
+  </div>
+</article>
+
+<article class="show-card" data-age="None" data-cast="None" data-runtime="None" data-status="needs_data">
+  <div class="show-card-body">
+    <h3><a href="pots-and-pan.html">Pots and Pan</a> <span class="badge badge-draft">Coming Soon</span> </h3>
+    <p class="show-tagline">The next chapter in the story of the boy who refuses to grow up</p>
     <p class="show-meta"></p>
-  </div>
-</article>
-
-<article class="show-card">
-  <div class="show-card-body">
-    <h3><a href="pots-and-pan.html">Pots and Pan</a> <span class="badge badge-draft">Coming Soon</span></h3>
-    <p class="show-tagline">The next chapter in the story of the boy who refuses to grow up — Peter Pan!</p>
-    <p class="show-credits">Book & Lyrics by Dave Hudson</p>
-    <p class="show-meta"></p>
+    <p class="show-credits">Lyrics by Dave Hudson</p>
   </div>
 </article>
 
     </div>
+    <p class="section-cta"><a href="shows.html">View all shows &rarr;</a></p>
   </section>
 
   <section class="section section-alt" id="why">
-    <h2>Why MTWW?</h2>
+    <h2>Why Choose MTWW?</h2>
     <div class="value-grid">
       <div class="value-card">
         <h3>Written for Young Performers</h3>
-        <p>Not shortened adult shows. Every musical is originally written to get the most out of young actors, with age-appropriate content and roles designed for developing performers.</p>
+        <p>Not shortened adult shows. Every musical is originally written for young actors, with age-appropriate content, comfortable vocal ranges, and roles designed for developing performers.</p>
       </div>
       <div class="value-card">
-        <h3>Battle-Tested</h3>
-        <p>Every show is workshopped, produced, and revised at The Actors Garden before being offered for licensing. What you get has been proven on stage with real kids.</p>
+        <h3>Proven on Stage</h3>
+        <p>Every show is workshopped and produced at The Actors Garden before licensing. What you receive has been tested, revised, and perfected with real kids over 30 years.</p>
       </div>
       <div class="value-card">
-        <h3>Everything Included</h3>
-        <p>$299 gets you the complete package: script, piano/vocal score, lead sheets, and backing tracks. No rental fees, no per-script charges, no surprises.</p>
+        <h3>Simple, Fair Licensing</h3>
+        <p>From $299 for everything: script, score, lead sheets, backing tracks. No per-script rental. No returns required. No surprises.</p>
+      </div>
+      <div class="value-card">
+        <h3>Award-Winning Writers</h3>
+        <p>Head playwright Dave Hudson is a two-time winner of the Richard Rodgers Award for new musicals — the most prestigious award in musical theatre writing.</p>
       </div>
     </div>
+  </section>
+
+  <section class="section" id="compare">
+    <h2>MTWW vs. Junior Versions</h2>
+    <p>Most school musicals are shortened versions of adult shows. MTWW shows are built from the ground up for young performers.</p>
+    <div class="table-wrap">
+      <table class="compare-table">
+        <thead>
+          <tr>
+            <th>Feature</th>
+            <th class="center">MTWW</th>
+            <th class="center">Junior Versions</th>
+            <th>Why It Matters</th>
+          </tr>
+        </thead>
+        <tbody>
+        <tr>
+          <td>Written for young performers</td>
+          <td class="center"><span class="check" aria-label="Yes">&#10003;</span></td>
+          <td class="center"><span class="x" aria-label="No">&#10007;</span></td>
+          <td class="note">Not shortened adult shows</td>
+        </tr>
+        <tr>
+          <td>Flat-rate licensing</td>
+          <td class="center"><span class="check" aria-label="Yes">&#10003;</span></td>
+          <td class="center"><span class="x" aria-label="No">&#10007;</span></td>
+          <td class="note">$299-399, no per-script rental</td>
+        </tr>
+        <tr>
+          <td>Unlimited performances</td>
+          <td class="center"><span class="check" aria-label="Yes">&#10003;</span></td>
+          <td class="center"><span class="x" aria-label="No">&#10007;</span></td>
+          <td class="note">Within license period</td>
+        </tr>
+        <tr>
+          <td>Printable materials</td>
+          <td class="center"><span class="check" aria-label="Yes">&#10003;</span></td>
+          <td class="center"><span class="x" aria-label="No">&#10007;</span></td>
+          <td class="note">No returns required</td>
+        </tr>
+        <tr>
+          <td>Workshopped with real kids</td>
+          <td class="center"><span class="check" aria-label="Yes">&#10003;</span></td>
+          <td class="center"><span class="x" aria-label="No">&#10007;</span></td>
+          <td class="note">Proven at The Actors Garden</td>
+        </tr>
+        <tr>
+          <td>Video/YouTube rights</td>
+          <td class="center"><span class="check" aria-label="Yes">&#10003;</span></td>
+          <td class="center"><span class="x" aria-label="No">&#10007;</span></td>
+          <td class="note">Record and share your production</td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section class="section section-alt" id="resources-preview">
+    <h2>Resources for Educators</h2>
+    <p>Guides, tips, and perspective from 30 years of producing youth musicals.</p>
+    <div class="resource-preview-grid">
+      <a href="how-to-choose-a-school-musical.html" class="resource-link">How to Choose a Musical for Your School</a>
+      <a href="why-original-musicals-work-better.html" class="resource-link">Why Original Musicals Work Better for Young Performers</a>
+      <a href="musical-theatre-for-elementary-students.html" class="resource-link">Musical Theatre for Elementary Students: What Works</a>
+    </div>
+    <p class="section-cta"><a href="resources.html">All resources &rarr;</a></p>
   </section>
 </main>
 <footer class="site-footer">
   <div class="footer-inner">
     <div class="footer-col">
       <p class="footer-name">Musical Theatre Worldwide</p>
-      <p>Born from <a href="https://actorsgarden.com">The Actors Garden</a>, Oak Park, Illinois</p>
+      <p>Born from <a href="https://theactorsgarden.com">The Actors Garden</a>, Oak Park, Illinois</p>
+      <p class="footer-credential">Two-time Richard Rodgers Award winners</p>
     </div>
     <div class="footer-col">
       <p><a href="mailto:admin@musicaltheatreworldwide.com">admin@musicaltheatreworldwide.com</a></p>
@@ -105,5 +220,19 @@
     <p class="footer-copy">&copy; 2026 Musical Theatre Worldwide</p>
   </div>
 </footer>
+<script>
+// Mobile nav toggle
+document.addEventListener('DOMContentLoaded', function() {
+  var toggle = document.querySelector('.nav-toggle');
+  var menu = document.getElementById('nav-menu');
+  if (toggle && menu) {
+    toggle.addEventListener('click', function() {
+      var expanded = toggle.getAttribute('aria-expanded') === 'true';
+      toggle.setAttribute('aria-expanded', !expanded);
+      menu.classList.toggle('nav-open');
+    });
+  }
+});
+</script>
 </body>
 </html>
