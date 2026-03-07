@@ -161,12 +161,19 @@ document.addEventListener('DOMContentLoaded', function() {{
 
 
 def show_thumb(show_id):
-    """Find the first image in a show's gallery folder for use as a thumbnail."""
+    """Find the best image in a show's gallery folder for use as a thumbnail.
+    Prefers Marengo Publishing professional shots over casual AG photos."""
     gallery_dir = ASSETS / "images" / show_id
     if gallery_dir.is_dir():
-        for p in sorted(gallery_dir.iterdir()):
-            if p.suffix.lower() in (".jpg", ".jpeg", ".png", ".webp"):
-                return f"assets/images/{show_id}/{p.name}"
+        photos = sorted(
+            p for p in gallery_dir.iterdir()
+            if p.suffix.lower() in (".jpg", ".jpeg", ".png", ".webp")
+        )
+        # Prefer marengo- prefixed photos (professional production shots)
+        marengo = [p for p in photos if p.name.startswith("marengo-")]
+        pick = marengo[0] if marengo else (photos[0] if photos else None)
+        if pick:
+            return f"assets/images/{show_id}/{pick.name}"
     return ""
 
 
