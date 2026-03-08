@@ -1219,6 +1219,8 @@ def build_all():
     build_resources()
 
     for show in shows:
+        if show.get("status") == "in-development":
+            continue
         build_show_page(show)
 
     for resource in resources:
@@ -1237,7 +1239,7 @@ def build_all():
         n_images = sum(1 for _ in dst_images.rglob("*") if _.is_file())
         print(f"  copied {n_images} images → output/assets/images/")
 
-    n_shows = len(shows)
+    n_shows = sum(1 for s in shows if s.get("status") != "in-development")
     n_resources = len(resources)
     total = n_shows + n_resources + 6 + 2  # 6 site pages + sitemap + robots
     print(f"\nDone. {total} files → output/")
