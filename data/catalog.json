@@ -52,11 +52,19 @@
     {"show_id": "pots-and-pan", "type": "recording", "format": null, "title": "Pots and Pan — Dave's Shared Folder (Dropbox)", "status": "have_remote", "location": "Dropbox: https://www.dropbox.com/l/scl/AAA5qmpbO5wNPKWxQscq3_pFdiyTKeQdVEU", "notes": "Dave shared 'Pots and Pan' via Dropbox 2018-01-31. Link may be expired."},
     {"show_id": "pots-and-pan", "type": "photo", "format": null, "title": "Pots and Pan — Production Photos", "status": "need", "location": null, "notes": "Multiple Pots and Pan newsletters forwarded by GiGi Jun-Aug 2024 — may contain photos."},
 
+    {"show_id": "good-knight", "type": "script", "format": null, "title": "Good Knight — Script + Score", "status": "on_daves_machine", "location": null, "notes": "AG camp show 2021 (both sessions). Composer: Mark Sutton-Smith. Also in Northern Sky/Libman catalog. Dave has materials."},
+    {"show_id": "good-knight", "type": "photo", "format": null, "title": "Good Knight — Production Photos", "status": "need", "location": null, "notes": "From 2021 AG production. Gold/Indigo/Crimson casts."},
+
+    {"show_id": "flowering-tree", "type": "script", "format": null, "title": "The Flowering Tree — Script + Score", "status": "have_remote", "location": "Box: https://app.box.com/s/lu5b79rw2ye9nxpfwzb210v8w7wqjjg3", "notes": "From GiGi 2022-06-27. 'Updated scores and lead sheets with chords inside. Individual song files, and complete mixes.' AG camp show 2022 both sessions."},
+    {"show_id": "flowering-tree", "type": "photo", "format": null, "title": "The Flowering Tree — Production Photos", "status": "need", "location": null, "notes": "From 2022 AG production."},
+
+    {"show_id": "green-gables", "type": "script", "format": null, "title": "Green Gables — Script", "status": "on_daves_machine", "location": null, "notes": "AG teen production 2019, directed by Alex Frisch. Work-shopped in MT classes prior to debut."},
+
     {"show_id": null, "type": "lead_sheet", "format": "pdf", "title": "Dare Song — Lead Sheet", "status": "have_remote", "location": "OneDrive: https://1drv.ms/b/s!AizVKxtrxVUrjIZM9dRajic857jdcg?e=VzJxgh", "notes": "From Dave 2024-10-06. Single PDF. Show unknown — may be standalone or from a show in development."},
 
     {"show_id": null, "type": "other", "format": null, "title": "Wings of Imagining — Mixing Files", "status": "have_remote", "location": "OneDrive (3 links): https://1drv.ms/u/s!AizVKxtrxVUrhaoDQoXOwrbdcQkLLQ?e=MiBmNf, https://1drv.ms/u/s!AizVKxtrxVUrhale7iBs_leoHUSYaA?e=dBsRuk, https://1drv.ms/u/s!AizVKxtrxVUrhaoUTKD-hEw98Uy-qw?e=LL6hAK", "notes": "From Dave 2020-05-30. Not a known MTWW show — may be a Dave project or AG production."},
 
-    {"show_id": null, "type": "other", "format": null, "title": "Green Gables — Sibelius Files", "status": "have_remote", "location": "OneDrive: https://1drv.ms/u/s!AizVKxtrxVUrhLEe-EdZFUWlwCalqA?e=RLZlAq", "notes": "From Dave 2019-06-26. AG produced Green Gables Act I and Act II (2024-2025)."},
+    {"show_id": "green-gables", "type": "sibelius", "format": "sib", "title": "Green Gables — Sibelius Files", "status": "have_remote", "location": "OneDrive: https://1drv.ms/u/s!AizVKxtrxVUrhLEe-EdZFUWlwCalqA?e=RLZlAq", "notes": "From Dave 2019-06-26. AG produced Green Gables as teen production 2019, directed by Alex Frisch."},
 
     {"show_id": "just-so", "type": "program", "format": null, "title": "Just So 2017 — Cast List and Schedule", "status": "have_remote", "location": "OneDrive (spreadsheet): https://1drv.ms/x/s!AizVKxtrxVUrgbFu04l65noj8-W5TA", "notes": "From GiGi 2017-06-12."},
 

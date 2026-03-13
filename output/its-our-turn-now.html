@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>It&#x27;s Our Turn Now — Musical for Schools — Musical Theatre Worldwide</title>
+<meta name="description" content="It&#x27;s Our Turn Now — musical for schools. ">
+<link rel="canonical" href="https://musicaltheatreworldwide.com/its-our-turn-now.html">
+<meta property="og:title" content="It&#x27;s Our Turn Now — Musical for Schools — Musical Theatre Worldwide">
+<meta property="og:description" content="It&#x27;s Our Turn Now — musical for schools. ">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://musicaltheatreworldwide.com/its-our-turn-now.html">
+<meta property="og:site_name" content="Musical Theatre Worldwide">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Product",
+  "name": "It's Our Turn Now \u2014 Musical for Schools",
+  "description": null,
+  "brand": {
+    "@type": "Brand",
+    "name": "Musical Theatre Worldwide"
+  },
+  "url": "https://musicaltheatreworldwide.com/its-our-turn-now.html",
+  "category": "Musical Theater Licensing"
+}
+</script>
+</head>
+<body>
+<a href="#main" class="skip-link">Skip to content</a>
+<nav class="site-nav" aria-label="Main navigation">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo">MTWW</a>
+    <button class="nav-toggle" aria-expanded="false" aria-controls="nav-menu" aria-label="Toggle navigation">
+      <span class="nav-toggle-bar"></span>
+      <span class="nav-toggle-bar"></span>
+      <span class="nav-toggle-bar"></span>
+    </button>
+    <div class="nav-links" id="nav-menu">
+    <a href="index.html">Home</a>
+    <a href="shows.html" class="nav-active">Our Shows</a>
+    <a href="licensing.html">Production Kits</a>
+    <a href="resources.html">For Educators</a>
+    <a href="about.html">About</a>
+    <a href="contact.html">Contact</a>
+    </div>
+  </div>
+</nav>
+
+<main id="main">
+  <section class="show-hero">
+    <h1>It's Our Turn Now</h1>
+    <p class="show-hero-tagline">None</p>
+    <p class="show-hero-credential">By two-time Richard Rodgers Award winner Dave Hudson</p>
+    <div class="show-hero-meta">
+      
+    </div>
+    
+  </section>
+
+  <section class="section section-alt">
+    <h2>Details</h2>
+    <table class="detail-table">
+<tr><th>Book & Lyrics</th><td>Dave Hudson</td></tr>
+<tr><th>Music</th><td>Dave Hudson</td></tr>
+<tr><th>Based On</th><td>Original</td></tr>
+    </table>
+  </section>
+</main>
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div class="footer-col">
+      <p class="footer-name">Musical Theatre Worldwide</p>
+      <p>Born from <a href="https://theactorsgarden.com">The Actors Garden</a>, Oak Park, Illinois</p>
+      <p class="footer-credential">Two-time Richard Rodgers Award winners</p>
+    </div>
+    <div class="footer-col">
+      <p><a href="mailto:admin@musicaltheatreworldwide.com">admin@musicaltheatreworldwide.com</a></p>
+      <p>312-953-3703</p>
+    </div>
+    <p class="footer-copy">&copy; 2026 Musical Theatre Worldwide</p>
+  </div>
+</footer>
+<script>
+// Mobile nav toggle
+document.addEventListener('DOMContentLoaded', function() {
+  var toggle = document.querySelector('.nav-toggle');
+  var menu = document.getElementById('nav-menu');
+  if (toggle && menu) {
+    toggle.addEventListener('click', function() {
+      var expanded = toggle.getAttribute('aria-expanded') === 'true';
+      toggle.setAttribute('aria-expanded', !expanded);
+      menu.classList.toggle('nav-open');
+    });
+  }
+
+  // FAQ accordion
+  var dts = document.querySelectorAll('.faq dt');
+  dts.forEach(function(dt) {
+    dt.addEventListener('click', function() {
+      var dd = dt.nextElementSibling;
+      var isOpen = dt.classList.contains('faq-open');
+      // Close all
+      dts.forEach(function(d) {
+        d.classList.remove('faq-open');
+        if (d.nextElementSibling) d.nextElementSibling.classList.remove('faq-open');
+      });
+      // Toggle this one
+      if (!isOpen) {
+        dt.classList.add('faq-open');
+        if (dd) dd.classList.add('faq-open');
+      }
+    });
+  });
+});
+</script>
+</body>
+</html>

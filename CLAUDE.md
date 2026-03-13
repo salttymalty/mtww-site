@@ -95,6 +95,8 @@ Edit `data/shows.json`, find the `pots-and-pan` entry. Here's what's open:
 
 Once assets are in the folders, we'll wire them into the build script.
 
+See ~/decisions/2026-03-08-mtww-vimeo-download-strategy.md for rationale on video download division of labor.
+
 ---
 
 ## How to Add a New Show
